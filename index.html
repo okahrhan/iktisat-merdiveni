@@ -1,0 +1,889 @@
+TEST çğış
+<b>x</b><!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>İktisat Merdiveni</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Düzen: kâğıt üstüne ders notu — milimetrik kâğıt hero, sol hizalı okuma programı, banknot yeşili vurgu, Nobel için altın */
+:root{
+  --paper:#F1F4F1; --card:#FBFCFA; --ink:#15202A; --muted:#56636C; --line:#D3DBD5;
+  --grid:rgba(21,32,42,.07); --accent:#0D6550; --accent-ink:#FFFFFF; --accent-soft:#DCEBE3;
+  --gold:#8A5E0B; --gold-soft:#F4E7C6; --blue:#2A4A7A; --blue-soft:#DFE7F3;
+  --cs:rgba(13,101,80,.18); --ps:rgba(42,74,122,.16);
+  --f-display:"Libre Caslon Display","Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --f-title:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E141A; --card:#141C24; --ink:#E3E8E3; --muted:#9AA6AD; --line:#29353F;
+  --grid:rgba(227,232,227,.06); --accent:#5DC3A3; --accent-ink:#0B1A15; --accent-soft:#163329;
+  --gold:#E1B455; --gold-soft:#372B12; --blue:#93B3E3; --blue-soft:#1B2840;
+  --cs:rgba(93,195,163,.20); --ps:rgba(147,179,227,.18); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0E141A; --card:#141C24; --ink:#E3E8E3; --muted:#9AA6AD; --line:#29353F;
+  --grid:rgba(227,232,227,.06); --accent:#5DC3A3; --accent-ink:#0B1A15; --accent-soft:#163329;
+  --gold:#E1B455; --gold-soft:#372B12; --blue:#93B3E3; --blue-soft:#1B2840;
+  --cs:rgba(93,195,163,.20); --ps:rgba(147,179,227,.18); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Başlık çubuğu */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-size:22px;white-space:nowrap;text-decoration:none;color:var(--ink)}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+nav.tabs a{text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:var(--r);font-weight:500;font-size:14px}
+nav.tabs a:hover{color:var(--ink);background:var(--grid)}
+nav.tabs a[aria-current="page"]{color:var(--ink);background:var(--accent-soft)}
+.meter{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.meter .bar{width:90px;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.meter .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+
+/* Hero */
+.hero{border-bottom:1px solid var(--line);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;padding-block:44px 40px;align-items:center}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(44px,7vw,80px);line-height:.98;letter-spacing:-.01em;margin-top:10px}
+.lede{font-size:17px;max-width:56ch;margin:16px 0 0;color:var(--ink)}
+.stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1}
+.stats span{font-size:12px;color:var(--muted);margin-top:4px}
+.cta{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--r);border:1px solid var(--line);background:var(--card);cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+
+.lab{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.lab-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.lab-head h3{font-family:var(--f-title);font-size:17px}
+.lab svg{width:100%;height:auto;display:block;margin-top:6px}
+.lab svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
+.lab .ctl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.lab label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.lab input[type=range]{width:100%;accent-color:var(--accent)}
+.readout{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:13px}
+.readout b{font-weight:500}
+.note{font-size:13px;color:var(--muted);margin-top:6px;min-height:2.6em}
+
+/* Görünümler */
+main{padding-block:28px 60px;scroll-margin-top:64px}
+.view[hidden]{display:none!important}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.sec-head h2{font-family:var(--f-display);font-weight:400;font-size:38px;line-height:1.05}
+.sec-head p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+
+/* Seviye ekseni */
+.axis{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:18px}
+.axis button{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:10px;cursor:pointer;display:flex;flex-direction:column;gap:4px;min-width:0}
+.axis button:hover{border-color:var(--accent)}
+.axis button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.axis .lv{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.axis .nm{font-weight:600;font-size:13px;line-height:1.25}
+.axis .pb{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:auto}
+.axis .pb i{display:block;height:100%;background:var(--accent)}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.filters input[type=search]{flex:1;min-width:200px;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);font:inherit;color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);cursor:pointer;font-size:13px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip.sm{padding:3px 9px;font-size:12px}
+
+.level{margin-bottom:40px}
+.level-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:baseline;border-top:2px solid var(--ink);padding-top:12px;margin-bottom:16px}
+.level-head .code{font-family:var(--f-display);font-size:44px;line-height:.9;grid-row:span 2}
+.level-head h3{font-family:var(--f-title);font-size:22px}
+.level-head p{margin:0;color:var(--muted);max-width:75ch}
+.level-head .out{grid-column:2;font-size:14px;margin-top:4px}
+.level-head .out b{color:var(--accent);font-weight:600}
+.group-title{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.card{position:relative;display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 14px 12px;cursor:pointer;text-align:left;min-width:0}
+.card:hover{border-color:var(--accent)}
+.card.read{background:var(--accent-soft)}
+.card .meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.card h4{font-family:var(--f-title);font-size:18px;line-height:1.25;margin:0;font-weight:700}
+.card .orig{font-style:italic;font-size:13px;color:var(--muted);margin-top:-4px}
+.card .auth{font-size:14px;font-weight:600}
+.card .gain{font-size:13.5px;color:var(--ink);margin:0}
+.card .foot{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+.pick{position:absolute;top:-9px;right:12px;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.02em}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid transparent;line-height:1.35}
+.t0{background:var(--gold-soft);color:var(--gold)}
+.t1{background:var(--blue-soft);color:var(--blue)}
+.t2{background:var(--accent-soft);color:var(--accent)}
+.t3{background:transparent;color:var(--muted);border-color:var(--line)}
+.t4{background:transparent;color:var(--muted);border-color:var(--line);border-style:dashed}
+.tr{font-family:var(--f-mono);font-size:11px;padding:1px 6px;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
+.dots{font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.dots i{font-style:normal;color:var(--accent)}
+.check{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);font-size:13px;color:transparent;flex:none}
+.card.read .check,.step.read .check{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.empty{padding:30px;border:1px dashed var(--line);border-radius:var(--r);color:var(--muted);text-align:center}
+
+/* Yollar */
+.paths{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:24px}
+.plist{display:flex;flex-direction:column;gap:8px}
+.pbtn{text-align:left;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.pbtn:hover{border-color:var(--accent)}
+.pbtn[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.pbtn b{font-size:15px}
+.pbtn span{font-size:12.5px;color:var(--muted)}
+.pbtn .pb{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:4px}
+.pbtn .pb i{display:block;height:100%;background:var(--accent)}
+.pdetail h3{font-family:var(--f-display);font-weight:400;font-size:34px}
+.pdetail .who{color:var(--muted);margin:6px 0 18px;max-width:70ch}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.step{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;padding:10px 0;align-items:start;cursor:pointer}
+.step .n{width:32px;height:32px;border-radius:50%;background:var(--paper);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:12px;position:relative;z-index:1}
+.step.read .n{background:var(--ink);color:var(--paper)}
+.step .body{min-width:0}
+.step h4{font-family:var(--f-title);font-size:17px;margin:0;font-weight:700}
+.step .sub{font-size:13px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:2px}
+.step p{margin:4px 0 0;font-size:13.5px}
+.step:hover h4{color:var(--accent)}
+
+/* Modeller */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.model{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.model .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);gap:8px}
+.model h4{font-family:var(--f-title);font-size:19px;margin:0}
+.model .who{font-size:13px;font-weight:600}
+.model p{margin:0;font-size:14px}
+.model .links{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.model .links button{border:1px solid var(--line);background:transparent;border-radius:4px;padding:3px 8px;font-size:12px;cursor:pointer;color:var(--ink)}
+.model .links button:hover{border-color:var(--accent);color:var(--accent)}
+
+/* İlerleme */
+.prog{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.panel h3{font-family:var(--f-title);font-size:18px;margin-bottom:12px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 120px 52px;gap:10px;align-items:center;font-size:14px;padding:5px 0}
+.row .pb{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.row .pb i{display:block;height:100%;background:var(--accent)}
+.row .mono{text-align:right;font-size:12px;color:var(--muted)}
+.big{font-family:var(--f-display);font-size:64px;line-height:1}
+.readlist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto}
+.readlist li button{background:none;border:0;padding:0;cursor:pointer;text-align:left;font-size:14px}
+.readlist li button:hover{color:var(--accent)}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:13px}
+
+/* Diyalog */
+dialog{border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:0;width:min(720px,calc(100% - 24px));max-height:88vh}
+dialog::backdrop{background:rgba(10,16,22,.55)}
+.dlg{padding:24px 26px 22px;display:flex;flex-direction:column;gap:16px}
+.dlg .x{position:absolute;top:12px;right:12px;border:1px solid var(--line);background:var(--card);border-radius:var(--r);width:34px;height:34px;cursor:pointer;font-size:18px;line-height:1}
+.dlg .kicker{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted);padding-right:40px}
+.dlg h2{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.05}
+.dlg .orig{font-style:italic;color:var(--muted);margin-top:-8px}
+.dlg h5{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:500}
+.dlg .author{border-left:3px solid var(--line);padding-left:14px}
+.dlg .author .nm{font-weight:700;font-size:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dlg .author p{margin:6px 0 0;font-size:14.5px;max-width:65ch}
+.dlg ul.gain{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;max-width:65ch}
+.dlg .how{background:var(--paper);border-radius:var(--r);padding:12px 14px;font-size:14px}
+.dlg .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-size:13px}
+.dlg .facts div{display:flex;flex-direction:column;gap:2px}
+.dlg .facts span{color:var(--muted);font-size:12px}
+.dlg .chips{display:flex;gap:6px;flex-wrap:wrap}
+.dlg .actions{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px}
+
+footer{border-top:1px solid var(--line);padding-block:22px 40px;font-size:13px;color:var(--muted)}
+footer p{margin:4px 0;max-width:90ch}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:24px;padding-block:28px}
+  .axis{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .paths{grid-template-columns:minmax(0,1fr)}
+  .plist{flex-direction:row;overflow-x:auto;padding-bottom:4px}
+  .pbtn{min-width:210px}
+}
+@media (max-width:640px){
+  nav.tabs{order:3;flex-basis:100%;flex-wrap:nowrap;overflow-x:auto}
+  nav.tabs a{white-space:nowrap}
+  .meter{margin-left:auto}
+}
+@media (max-width:520px){
+  .axis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .meter .bar{width:60px}
+  .lab .ctl{grid-template-columns:1fr}
+  .dlg{padding:20px 18px}
+  .row{grid-template-columns:minmax(0,1fr) 80px 46px}
+  .level-head .code{font-size:34px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head><body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#merdiven">İktisat Merdiveni</a>
+    <nav class="tabs" aria-label="Bölümler">
+      <a href="#merdiven" data-v="merdiven">Merdiven</a>
+      <a href="#yollar" data-v="yollar">Okuma yolları</a>
+      <a href="#modeller" data-v="modeller">Modeller</a>
+      <a href="#ilerleme" data-v="ilerleme">İlerlemem</a>
+    </nav>
+    <div class="meter" title="Okuduğun eserler"><span class="mono" id="mCount">0/0</span><span class="bar"><i id="mBar"></i></span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Sıfırdan doktora düzeyine okuma programı</div>
+      <h1>İktisat<br>Merdiveni</h1>
+      <p class="lede">Altı basamak: sezgi, giriş, orta düzey, ileri lisans, doktora ve araştırma sınırı. Her eserde yazarın kim olduğu ve okuyunca ne kazanacağın yazıyor. Yazarlar başarısına göre öne çıkarıldı: Nobel ödüllüler, merkez bankası başkanları, IMF ve Dünya Bankası baş ekonomistleri, disiplinin kurucuları.</p>
+      <div class="stats" id="stats"></div>
+      <div class="cta">
+        <button class="btn primary" id="ctaStart" type="button">Giriş kitabı: Mankiw, Ekonominin İlkeleri</button>
+        <a class="btn" href="#yollar">Okuma yolu seç →</a>
+      </div>
+    </div>
+    <div class="lab" aria-label="Etkileşimli arz-talep modeli">
+      <div class="lab-head"><h3>Arz ve talep</h3><span class="eyebrow">S1 · ilk model</span></div>
+      <svg id="sd" viewBox="0 0 360 290" role="img" aria-label="Arz ve talep eğrileri, denge noktası ve artıklar">
+        <g id="gridl"></g>
+        <polygon id="cs" fill="var(--cs)"></polygon>
+        <polygon id="ps" fill="var(--ps)"></polygon>
+        <line id="hd" stroke="var(--muted)" stroke-dasharray="3 3" stroke-width="1"></line>
+        <line id="vd" stroke="var(--muted)" stroke-dasharray="3 3" stroke-width="1"></line>
+        <line id="dl" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"></line>
+        <line id="sl" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round"></line>
+        <circle id="eq" r="5" fill="var(--ink)"></circle>
+        <text id="dlab" style="fill:var(--accent);font-weight:500">Talep</text>
+        <text id="slab" style="fill:var(--blue);font-weight:500">Arz</text>
+        <text id="plab">P*</text><text id="qlab">Q*</text>
+        <line x1="44" y1="256" x2="344" y2="256" stroke="var(--ink)" stroke-width="1.2"></line>
+        <line x1="44" y1="256" x2="44" y2="22" stroke="var(--ink)" stroke-width="1.2"></line>
+        <text x="344" y="276" text-anchor="end">Miktar (Q)</text>
+        <text x="50" y="18">Fiyat (P)</text>
+      </svg>
+      <div class="ctl">
+        <label for="sa">Talep düzeyi (gelir, beğeni…)<input id="sa" type="range" min="6" max="12" step="0.1" value="9"></label>
+        <label for="sc">Üretim maliyeti (girdi, vergi…)<input id="sc" type="range" min="0" max="5" step="0.1" value="1"></label>
+      </div>
+      <div class="readout mono" id="ro"></div>
+      <div class="note" id="sdNote"></div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <!-- MERDİVEN -->
+  <section class="view" id="v-merdiven">
+    <div class="sec-head">
+      <div><h2>Merdiven</h2><p>Bir seviyeyi seç ya da hepsini gör. Her seviyede yazarlar başarılarına göre sıralı: önce Nobel ödüllüler ve politika yapıcılar, sonra kurucu düşünürler ve akademisyenler. Karta tıklayınca yazar ve kazanımlar açılır.</p></div>
+    </div>
+    <div class="axis" id="axis"></div>
+    <div class="filters">
+      <input type="search" id="q" placeholder="Kitap, yazar ya da konu ara (ör. Keynes, oyun, kriz)" aria-label="Ara">
+      <button class="chip" id="fNobel" type="button" aria-pressed="false">Yalnız Nobel'li yazarlar</button>
+      <button class="chip" id="fTr" type="button" aria-pressed="false">Türkçesi var</button>
+      <button class="chip" id="fUnread" type="button" aria-pressed="false">Okumadıklarım</button>
+    </div>
+    <div id="levels"></div>
+  </section>
+
+  <!-- YOLLAR -->
+  <section class="view" id="v-yollar" hidden>
+    <div class="sec-head"><div><h2>Okuma yolları</h2><p>Merdivenin içinden geçen sıralı rotalar. Her yol bir soruya cevap arar; sıradaki eser bir öncekinin üstüne kurulur. Yanındaki daireye tıklayarak okuduklarını işaretleyebilirsin.</p></div></div>
+    <div class="paths">
+      <div class="plist" id="plist"></div>
+      <div class="pdetail" id="pdetail"></div>
+    </div>
+  </section>
+
+  <!-- MODELLER -->
+  <section class="view" id="v-modeller" hidden>
+    <div class="sec-head"><div><h2>Ekonomik modeller</h2><p>İktisadın düşünme aletleri. Her model kim tarafından, ne zaman kuruldu, ne anlatıyor ve merdivenin hangi kitaplarında öğreniliyor.</p></div></div>
+    <div class="mgrid" id="mgrid"></div>
+  </section>
+
+  <!-- İLERLEME -->
+  <section class="view" id="v-ilerleme" hidden>
+    <div class="sec-head"><div><h2>İlerlemem</h2><p>İşaretlerin bu tarayıcıda saklanır. Başka cihazda ayrı tutulur.</p></div></div>
+    <div class="prog" id="prog"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Ödül ve görev bilgileri Ekim 2026 itibarıyladır (2026 Nobel İktisat Ödülü: Robert Hall ve Michael Woodford). “Türkçesi var” işareti bilinen basılı çeviriyi gösterir; işaret olmaması çeviri olmadığı anlamına gelmez, kitapçıda ya da kütüphanede kontrol et.</p>
+    <p>Matematik düzeyi: ○○○ hiç yok · ●○○ basit grafik ve cebir · ●●○ kalkülüs ve optimizasyon · ●●● analiz, topoloji, ispat.</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dTitle"><div class="dlg" id="dlgBody"></div></dialog>
+
+<script>
+const TIER=["Nobel ödüllü","Politika yapıcı","Kurucu düşünür","Akademik otorite","Yazar / gazeteci"];
+const LEVELS=[
+ {n:"Sezgi",d:"Matematik yok. Modern klasiklerle iktisatçı gibi düşünmeyi, büyük soruları ve fikirler tarihini tanırsın.",o:"Fırsat maliyeti, teşvik, kurum, piyasa başarısızlığı gibi kavramları sezgisel olarak kullanırsın."},
+ {n:"Giriş",d:"Üniversite birinci sınıf ders kitabı. Mikro ve makronun temel araçları.",o:"Arz-talep grafiği çizer, GSYH, enflasyon ve işsizlik verilerini yorumlarsın."},
+ {n:"Orta düzey ve kurucu klasikler",d:"Kalkülüslü mikro ve makro, iktisadın kurucu metinleri ve tematik okumalar.",o:"Kısıtlı optimizasyonla tüketici ve firma problemini çözer, IS-LM ve Solow ile politika analizi yaparsın."},
+ {n:"İleri lisans",d:"Yüksek lisansa hazırlık: ileri makro, ileri mikro, oyun teorisi, ekonometri.",o:"Dinamik modeller kurar, nedensel tahmin yöntemleriyle yazılmış makaleleri okursun."},
+ {n:"Doktora çekirdeği",d:"Dünya genelinde doktora birinci yılında okutulan standart kitaplar ve kuramın aksiyomatik temelleri.",o:"Bir iktisat dergisindeki teorik makaleyi baştan sona takip edebilirsin."},
+ {n:"Araştırma sınırı",d:"Alanı değiştiren makaleler. Çoğu Nobel ödülüne giden çalışmanın kendisi.",o:"Kurucu sonuçları ikinci elden değil, yazıldıkları hâliyle okursun."}
+];
+const GROUPS={ders:"Ders kitapları",klasik:"Kurucu klasikler",tema:"Tematik okumalar"};
+
+const B=[
+/* ---------- SEVİYE 0 ---------- */
+{id:"heilbroner",lv:0,tt:"Dünyevi Filozoflar",t:"The Worldly Philosophers",a:"Robert L. Heilbroner",y:1953,k:"Kitap",tier:3,badge:"New School profesörü",m:0,pick:"Buradan başla",
+bio:"Robert Heilbroner (1919–2005) New School for Social Research'te iktisat profesörüydü. Kitap 1953'ten bu yana milyonlarca sattı ve tüm zamanların en çok okunan iktisat kitaplarından biri sayılır.",
+gain:["Smith, Malthus, Ricardo, Marx, Veblen, Keynes ve Schumpeter'in fikirlerini yaşadıkları dönemle birlikte tanırsın.","İktisadın birbirine cevap veren fikirlerden oluşan bir tartışma olduğunu görürsün.","Klasikler Yolu için bir harita edinirsin."],
+how:"Roman gibi okunur. Klasiklere geçmeden önce ilk kitabın olsun."},
+{id:"hazlitt",lv:0,tt:"Tek Derste İktisat",t:"Economics in One Lesson",a:"Henry Hazlitt",y:1946,k:"Kitap",tier:4,badge:"NYT iktisat yazarı",m:0,trx:1,
+bio:"Henry Hazlitt (1894–1993) The New York Times ve Newsweek'te iktisat yazarlığı yaptı. Akademisyen değildi, ama kitabı piyasa yanlısı düşüncenin en çok okunan popüler metinlerinden biri oldu.",
+gain:["Bir politikanın yalnızca görünen etkisine değil, görünmeyen ve uzun vadeli etkilerine de bakma alışkanlığı kazanırsın (Bastiat'nın “kırık cam” örneği).","Fırsat maliyeti, fiyat kontrolleri, asgari ücret ve korumacılık hakkında hızlı bir sezgi edinirsin."],
+how:"Avusturya okulu çizgisinde, tek taraflı bir kitap. Dengelemek için hemen ardından Ha-Joon Chang'ı oku."},
+{id:"friedman_free",lv:0,tt:"Seçme Özgürlüğü",t:"Free to Choose",a:"Milton & Rose Friedman",y:1980,k:"Kitap",tier:0,badge:"Nobel 1976",m:0,trx:1,
+bio:"Milton Friedman (1912–2006) 1976 Nobel İktisat Ödülü'nü tüketim analizi, para tarihi ve istikrar politikası çalışmalarıyla aldı. Chicago Okulu'nun ve monetarizmin öncüsüdür. Kitap, eşi Rose Friedman ile aynı adlı televizyon dizisiyle birlikte yazıldı.",
+gain:["Fiyat sisteminin bilgiyi ve teşviki nasıl taşıdığını sade bir dille öğrenirsin.","Enflasyonun parasal açıklamasını tanırsın: “Enflasyon her zaman ve her yerde parasal bir olgudur.”","Refah devleti, eğitim ve dış ticaret politikalarına liberal bir bakış edinirsin."],
+how:"Kolay okunur. Keynes ve Polanyi ile karşılaştırmalı okumak ufuk açar."},
+{id:"chang_guide",lv:0,tt:"Ekonomi: Kullanma Kılavuzu",t:"Economics: The User's Guide",a:"Ha-Joon Chang",y:2014,k:"Kitap",tier:3,badge:"Leontief Ödülü 2005",m:0,trx:1,
+bio:"Ha-Joon Chang uzun yıllar Cambridge Üniversitesi'nde kalkınma iktisadı okuttu; şimdi Londra'da SOAS'ta. 2005'te Wassily Leontief Ödülü'nü aldı. Kitapları 40'tan fazla dile çevrildi.",
+gain:["Klasik, neoklasik, Marksist, Keynesyen, Avusturya, Schumpeteryen, kurumsal, davranışsal ve kalkınmacı okulları tek kitapta karşılaştırırsın.","GSYH, işsizlik, eşitsizlik ve finans gibi temel kavramları veriyle tanırsın.","Her iktisadi iddianın arkasındaki değer yargısını fark etmeyi öğrenirsin."],
+how:"Hazlitt'in tek bakışından sonra iyi bir denge. Ders kitabına başlamadan önce okunacak en iyi genel bakış."},
+{id:"sowell",lv:0,tt:"Temel Ekonomi",t:"Basic Economics",a:"Thomas Sowell",y:2000,k:"Kitap",tier:3,badge:"Hoover Enstitüsü",m:0,
+bio:"Thomas Sowell, Chicago Üniversitesi'nde doktorasını yaptı; 1980'den beri Stanford'daki Hoover Enstitüsü'nde kıdemli araştırmacı. 2002'de ABD Ulusal Beşeri Bilimler Madalyası'nı aldı.",
+gain:["Tek grafik ya da denklem olmadan fiyatların, kârın ve zararın ekonomideki işlevini anlarsın.","Kira kontrolü, sübvansiyon ve ticaret kısıtlaması gibi politikaların sonuçlarını tarihsel örneklerle görürsün."],
+how:"Uzun ama akıcı. Ders kitabıyla aynı dönemde okunabilir; grafiklerin sezgisini verir."},
+{id:"wnf",lv:0,tt:"Ulusların Düşüşü",t:"Why Nations Fail",a:"Daron Acemoğlu & James A. Robinson",y:2012,k:"Kitap",tier:0,badge:"Nobel 2024",m:0,trx:1,
+bio:"Daron Acemoğlu İstanbul doğumlu; MIT'de profesör. James Robinson Chicago Üniversitesi'nde. İkisi Simon Johnson ile birlikte 2024 Nobel İktisat Ödülü'nü kurumların ülkelerin refahını nasıl belirlediğine dair çalışmalarıyla aldı.",
+gain:["“Kapsayıcı” ve “sömürücü” kurumlar ayrımını öğrenirsin; ülkeler arası zenginlik farkını açıklayan güçlü bir çerçeve.","Nogales (ABD–Meksika sınırı), iki Kore, Osmanlı ve İngiltere gibi örneklerle tarihle iktisadı birleştirirsin."],
+how:"Seviye 0'ın en önemli kitaplarından. Kalkınma ve Kurumlar yolunun ilk durağı."},
+{id:"kahneman",lv:0,tt:"Hızlı ve Yavaş Düşünme",t:"Thinking, Fast and Slow",a:"Daniel Kahneman",y:2011,k:"Kitap",tier:0,badge:"Nobel 2002",m:0,trx:1,
+bio:"Daniel Kahneman (1934–2024) bir psikologdu; Amos Tversky ile geliştirdiği beklenti teorisi nedeniyle 2002 Nobel İktisat Ödülü'nü aldı. Davranışsal iktisadın kurucusudur.",
+gain:["Sistem 1 (hızlı, sezgisel) ve Sistem 2 (yavaş, hesapçı) düşünme ayrımını öğrenirsin.","Çapalama, kayıptan kaçınma ve çerçeveleme gibi önyargıları tanırsın.","Ders kitaplarındaki “rasyonel birey” varsayımının nerede kırıldığını görürsün."],
+how:"Uzun bir kitap. İktisatla en ilgili kısım IV. bölüm (Seçimler)."},
+{id:"poor_econ",lv:0,tt:"Yoksul Ekonomi",t:"Poor Economics",a:"Abhijit Banerjee & Esther Duflo",y:2011,k:"Kitap",tier:0,badge:"Nobel 2019",m:0,trx:1,
+bio:"MIT'deki Banerjee ve Duflo, Michael Kremer ile birlikte 2019 Nobel İktisat Ödülü'nü küresel yoksulluğu deneysel yöntemle azaltma çalışmalarıyla aldı. Duflo bu ödülü alan en genç kişidir.",
+gain:["Yoksul hanelerin beslenme, sağlık, eğitim ve kredi kararlarını sahadan verilerle görürsün.","Randomize kontrollü deneyin (RCT) mantığını öğrenirsin.","Büyük teoriler yerine somut ve test edilebilir sorular sormayı öğrenirsin."],
+how:"Acemoğlu'nun kurum vurgusuyla karşılaştırarak oku."},
+{id:"galbraith",lv:0,tt:"1929 Büyük Çöküş",t:"The Great Crash, 1929",a:"John Kenneth Galbraith",y:1955,k:"Kitap",tier:1,badge:"Büyükelçi · Harvard",m:0,
+bio:"John Kenneth Galbraith (1908–2006) Harvard profesörüydü. II. Dünya Savaşı'nda ABD'nin fiyat kontrol ofisinin yönetiminde yer aldı, Kennedy döneminde Hindistan büyükelçiliği yaptı. ABD'nin en yüksek sivil nişanı olan Özgürlük Madalyası'nı iki kez aldı.",
+gain:["Bir spekülatif balonun nasıl şiştiğini ve nasıl patladığını adım adım görürsün.","Kaldıraç, yatırım ortaklıkları ve aşırı iyimserliğin psikolojisini tanırsın."],
+how:"Kısa ve keyifli. Para, Kriz ve Makro yolunun başlangıcı."},
+
+/* ---------- SEVİYE 1 ---------- */
+{id:"mankiw_p",lv:1,tt:"Ekonominin İlkeleri",t:"Principles of Economics",a:"N. Gregory Mankiw",y:1997,k:"Ders kitabı",tier:1,badge:"Beyaz Saray baş ekonomi danışmanı",m:1,trx:1,pick:"Ana önerim",
+bio:"Gregory Mankiw Harvard Üniversitesi'nde profesör. 2003–2005 arasında ABD Başkanı'nın Ekonomik Danışmanlar Konseyi'ne başkanlık etti. Harvard'ın büyük giriş dersi Ec10'u yıllarca o verdi. Kitap dünyada en çok kullanılan giriş ders kitaplarından biri.",
+gain:["“İktisadın on ilkesi” ile başlayıp arz-talep, esneklik, vergiler, refah ve piyasa başarısızlıklarını öğrenirsin.","Makroda GSYH, enflasyon, işsizlik, para sistemi ve kısa dönem dalgalanmaları tanırsın.","Bölüm sonu sorularıyla grafik çizme ve yorumlama becerisi kazanırsın."],
+how:"Giriş için ana önerim bu. Her bölümü okuyup soruları çöz. Matematik bilgin fazlasıyla yeterli; kavramlara ve sezgiye odaklan."},
+{id:"krugman_wells",lv:1,tt:"İktisat (Krugman & Wells)",t:"Economics",a:"Paul Krugman & Robin Wells",y:2005,k:"Ders kitabı",tier:0,badge:"Nobel 2008",m:1,
+bio:"Paul Krugman 2008 Nobel İktisat Ödülü'nü dış ticaret örüntüleri ve ekonomik faaliyetin coğrafi dağılımı üzerine çalışmalarıyla aldı. Princeton'da ve CUNY'de ders verdi, uzun yıllar New York Times köşe yazarlığı yaptı. Robin Wells iktisatçı ve Krugman'ın eşi.",
+gain:["Mankiw ile aynı konuları, her bölümü gerçek bir olayla açan bir anlatımla öğrenirsin.","Makroda Keynesyen bakışın gerekçelerini daha güçlü görürsün."],
+how:"Mankiw'e alternatif ya da ikinci görüş. İkisini baştan sona okumana gerek yok; takıldığın konuda öbürüne bak."},
+{id:"core",lv:1,tt:"Ekonomi (CORE)",t:"The Economy",a:"CORE ekibi (Wendy Carlin, Samuel Bowles ve diğerleri)",y:2017,k:"Ders kitabı · ücretsiz",tier:3,badge:"Açık erişim",m:1,link:"https://www.core-econ.org",
+bio:"CORE, UCL'den Wendy Carlin'in öncülüğünde 2013'te, giriş derslerini 2008 krizinden sonra yenilemek için kurulan uluslararası bir akademisyen ağı. Samuel Bowles Santa Fe Enstitüsü'nde. Kitap core-econ.org adresinde ücretsiz.",
+gain:["Eşitsizlik, iklim ve finansal kriz gibi güncel konuları ilk dersten itibaren veriyle görürsün.","Oyun teorisi ve kurumlar baştan konunun içinde; standart kitaplardan daha güncel bir çerçeve."],
+how:"Ücretsiz ve etkileşimli. Mankiw ile paralel okumak için ideal."},
+{id:"unsal",lv:1,tt:"Mikro İktisat · Makro İktisat",t:null,a:"Erdal M. Ünsal",y:null,k:"Türkçe ders kitabı",tier:3,badge:"Türkçe standart kaynak",m:2,trx:1,
+bio:"Erdal M. Ünsal'ın mikro ve makro iktisat kitapları Türkiye'deki iktisat bölümlerinde en yaygın kullanılan Türkçe ders kitaplarındandır ve çok sayıda baskı yaptı.",
+gain:["Türkçe iktisat terminolojisini (marjinal ikame oranı, esneklik, toplam talep vb.) oturtursun.","Türk üniversitelerindeki sınavların dili ve soru biçimiyle uyumlu bir anlatım edinirsin."],
+how:"Mankiw ile birlikte başvuru kaynağı olarak kullan, özellikle Türkçe terimler için."},
+{id:"samuelson",lv:1,tt:"İktisat (Samuelson)",t:"Economics: An Introductory Analysis",a:"Paul A. Samuelson (sonraki baskılarda William Nordhaus ile)",y:1948,k:"Ders kitabı",tier:0,badge:"Nobel 1970",m:1,
+bio:"Paul Samuelson (1915–2009) 1970'te Nobel İktisat Ödülü'nü alan ilk Amerikalıdır; MIT iktisat bölümünü dünyanın en iyilerinden biri yaptı. Bu kitap modern iktisat ders kitabı türünü başlattı. Ortak yazar William Nordhaus 2018 Nobel'ini iklim değişikliğini makro modellere kattığı için aldı.",
+gain:["Keynesyen ve neoklasik iktisadın birleşimi olan “neoklasik sentez”i kaynağından görürsün.","Ders kitabı geleneğinin nasıl doğduğunu anlarsın."],
+how:"Tarihî önemi için. Güncel konular için Mankiw daha uygun."},
+{id:"rodrik",lv:1,tt:"Ekonomi Kuralları",t:"Economics Rules",a:"Dani Rodrik",y:2015,k:"Kitap",tier:3,badge:"Harvard · Leontief 2002",m:0,trx:1,
+bio:"Dani Rodrik İstanbul doğumlu; Harvard Kennedy School'da uluslararası politik iktisat profesörü. 2002'de Leontief Ödülü'nü, 2007'de ilk Albert O. Hirschman Ödülü'nü aldı. Küreselleşme ve kalkınma politikası alanında en çok atıf alan isimlerden.",
+gain:["İktisadi modelin ne olduğunu öğrenirsin: gerçeğin kendisi değil, belli bir soru için seçilen sadeleştirilmiş bir harita.","Doğru modeli seçme becerisinin iktisatçılığın asıl zanaati olduğunu görürsün.","İktisatçıların kamuoyuyla konuşurken yaptığı hataları tanırsın."],
+how:"Giriş ders kitabından hemen sonra oku. Modellere bakışını kalıcı olarak değiştirir."},
+
+/* ---------- SEVİYE 2: ders ---------- */
+{id:"varian",lv:2,g:"ders",tt:"Orta Düzey Mikroiktisat",t:"Intermediate Microeconomics: A Modern Approach",a:"Hal R. Varian",y:1987,k:"Ders kitabı",tier:1,badge:"Google baş ekonomisti",m:2,pick:"Seviyenin omurgası",
+bio:"Hal Varian Berkeley'de Bilgi Okulu'nun kurucu dekanıydı. 2002'den beri Google'ın baş ekonomisti; şirketin reklam açık artırmalarının tasarımında rol aldı. Kitapları mikro iktisadın standart kaynakları arasında.",
+gain:["Tercihler, fayda, bütçe kısıtı ve Slutsky denklemiyle tüketici teorisini kalkülüsle kurarsın.","Firma teorisi, piyasa yapıları, genel denge, oyun teorisi ve asimetrik bilgiyi öğrenirsin.","Açık artırmalar ve ağ dışsallıkları gibi modern konulara girersin."],
+how:"Kalkülüslü ekleri atlama. Mankiw'den sonra doğrudan buraya geç."},
+{id:"mankiw_m",lv:2,g:"ders",tt:"Makroekonomi",t:"Macroeconomics",a:"N. Gregory Mankiw",y:1992,k:"Ders kitabı",tier:1,badge:"Beyaz Saray baş ekonomi danışmanı",m:2,trx:1,
+bio:"Ekonominin İlkeleri'nin yazarı (Harvard; 2003–2005 Ekonomik Danışmanlar Konseyi başkanı). Bu kitap orta düzey makronun en yaygın ders kitabıdır.",
+gain:["Solow büyüme modeli, IS-LM, AD-AS, Mundell-Fleming ve Phillips eğrisini öğrenirsin.","Uzun dönem (büyüme) ile kısa dönem (dalgalanma) ayrımını oturtursun.","Para ve maliye politikasının etkilerini model üzerinde analiz edersin."],
+how:"Varian ile aynı dönemde oku. Blanchard alternatifi."},
+{id:"blanchard",lv:2,g:"ders",tt:"Makroekonomi (Blanchard)",t:"Macroeconomics",a:"Olivier Blanchard",y:1997,k:"Ders kitabı",tier:1,badge:"IMF baş ekonomisti",m:2,trx:1,
+bio:"Olivier Blanchard MIT'de uzun yıllar profesörlük ve bölüm başkanlığı yaptı. 2008–2015 arasında, küresel kriz ve Avro bölgesi krizi döneminde IMF'nin baş ekonomistiydi.",
+gain:["Kısa, orta ve uzun dönemi ayrı ama bağlantılı modellerle görürsün (IS-LM-PC).","2008 krizi, sıfır faiz sınırı ve kamu borcu gibi konuları kriz yönetiminin içinden birinden öğrenirsin."],
+how:"Mankiw Makro'ya alternatif; kriz konularında daha güçlü."},
+{id:"simon_blume",lv:2,g:"ders",tt:"İktisatçılar için Matematik",t:"Mathematics for Economists",a:"Carl P. Simon & Lawrence Blume",y:1994,k:"Ders kitabı",tier:3,badge:"Michigan & Cornell",m:3,
+bio:"Carl Simon (Michigan) matematikçi ve karmaşık sistemler araştırmacısı; Lawrence Blume Cornell'de iktisat profesörü. Kitap lisansüstü iktisada geçişin standart matematik kaynağıdır.",
+gain:["Matematik bilgini iktisadın diline çevirirsin: kısıtlı optimizasyon, Lagrange, Kuhn-Tucker, konvekslik, zarf teoremi.","Karşılaştırmalı statik ve dinamik sistemleri iktisadi örneklerle görürsün."],
+how:"Matematik okuyan biri konuların çoğunu bilir. İktisadi uygulamalara ve Kuhn-Tucker bölümlerine odaklanıp hızlı geçebilirsin."},
+/* ---------- SEVİYE 2: klasik ---------- */
+{id:"ibn_haldun",lv:2,g:"klasik",tt:"Mukaddime",t:"el-Mukaddime",a:"İbn Haldun",y:1377,k:"Kitap",tier:2,badge:"Kurucu düşünür",m:0,trx:1,
+bio:"İbn Haldun (1332–1406) Tunuslu tarihçi ve düşünür; Kuzey Afrika saraylarında devlet görevleri üstlendi, Kahire'de Mâlikî kadılığı yaptı. Sosyolojinin ve tarih felsefesinin öncüsü sayılır.",
+gain:["İş bölümü, uzmanlaşma ve şehirleşmenin (umran) refahı nasıl artırdığına dair erken bir analiz okursun.","Vergi oranları yükseldikçe vergi gelirinin düşebileceği fikrini görürsün; Arthur Laffer kendi eğrisini anlatırken İbn Haldun'a atıf yapar.","Devletlerin yükseliş-çöküş döngüsünü asabiyet kavramıyla düşünürsün."],
+how:"Tamamını değil, iktisatla ilgili bölümleri (geçim, kazanç, sanatlar, vergiler) oku. Smith'ten önce."},
+{id:"smith",lv:2,g:"klasik",tt:"Milletlerin Zenginliği",t:"An Inquiry into the Nature and Causes of the Wealth of Nations",a:"Adam Smith",y:1776,k:"Kitap",tier:2,badge:"İktisadın kurucusu",m:0,trx:1,
+bio:"Adam Smith (1723–1790) Glasgow Üniversitesi'nde ahlak felsefesi profesörüydü; hayatının sonunda İskoçya gümrük komiserliği yaptı. Modern iktisadın kurucusu kabul edilir. İlk büyük eseri Ahlaki Duygular Kuramı'dır (1759).",
+gain:["İş bölümünü (toplu iğne atölyesi), piyasa fiyatını ve “görünmez el” fikrini kaynağından okursun.","Merkantilizm eleştirisini ve serbest ticaretin gerekçesini öğrenirsin.","Devletin görevleri (savunma, adalet, kamu işleri) üzerine kurucu tartışmayı görürsün."],
+how:"Çok uzun. I. Kitap (1–10. bölümler) ve IV. Kitap ile başla. Mankiw'in ilk bölümleriyle birlikte iyi oturur."},
+{id:"malthus",lv:2,g:"klasik",tt:"Nüfus İlkesi Üzerine Bir Deneme",t:"An Essay on the Principle of Population",a:"Thomas Robert Malthus",y:1798,k:"Kitap",tier:2,badge:"İlk iktisat profesörü",m:0,trx:1,
+bio:"Thomas Malthus (1766–1834) Doğu Hindistan Şirketi Koleji'nde siyasal iktisat profesörüydü; İngiltere'de bu unvanı taşıyan ilk kişi olarak anılır. Nüfus kuramı Darwin'i ve Wallace'ı etkiledi.",
+gain:["Nüfus artışı ile kaynaklar arasındaki gerilimi ve “Malthus tuzağı”nı öğrenirsin.","Sanayi Devrimi öncesinde kişi başı gelirin neden binlerce yıl yerinde saydığı sorusuyla tanışırsın; büyüme kuramlarının çıkış sorusu."],
+how:"Kısa. İlk baskıyı (1798) oku."},
+{id:"ricardo",lv:2,g:"klasik",tt:"Siyasal İktisadın ve Vergilendirmenin İlkeleri",t:"On the Principles of Political Economy and Taxation",a:"David Ricardo",y:1817,k:"Kitap",tier:1,badge:"Borsacı · milletvekili",m:1,trx:1,
+bio:"David Ricardo (1772–1823) Londra borsasında büyük bir servet kazandı, sonra Avam Kamarası'na girdi. Soyut iktisadi modellemenin babası sayılır.",
+gain:["Karşılaştırmalı üstünlük ilkesini (İngiltere kumaşı, Portekiz şarabı) kaynağından öğrenirsin; bugün hâlâ dış ticaret teorisinin temeli.","Rant teorisini ve gelirin toprak, emek ve sermaye arasında bölüşümünü görürsün.","Varsayımlardan model kurup sonuç türetme yöntemini öğrenirsin."],
+how:"Önce 7. bölüm (dış ticaret) ve 2. bölüm (rant)."},
+{id:"marx",lv:2,g:"klasik",tt:"Kapital, Cilt I",t:"Das Kapital, Band I",a:"Karl Marx",y:1867,k:"Kitap",tier:2,badge:"Kurucu düşünür",m:1,trx:1,
+bio:"Karl Marx (1818–1883) filozof, iktisatçı ve tarihçiydi. Kapital, 20. yüzyılın siyasi tarihini en çok etkileyen iktisat kitabıdır.",
+gain:["Klasik emek-değer teorisinin en uç gelişimini, artı-değer ve sermaye birikimi kavramlarını öğrenirsin.","Kapitalizme eleştirel bir bakış ve 20. yüzyıl tarihini anlamak için gereken arka planı edinirsin.","Sanayi Devrimi İngiltere'sinin çalışma koşullarına dair ayrıntılı tarihsel malzeme görürsün."],
+how:"Zor ve uzun. I. Kısım'ı (meta ve para) yavaş oku. Heilbroner'in Marx bölümü iyi bir giriş."},
+{id:"marshall",lv:2,g:"klasik",tt:"İktisadın İlkeleri (Marshall)",t:"Principles of Economics",a:"Alfred Marshall",y:1890,k:"Kitap",tier:2,badge:"Cambridge okulunun kurucusu",m:1,
+bio:"Alfred Marshall (1842–1924) Cambridge'de iktisadı ayrı bir lisans programı olarak kurdu (1903). Keynes ve Pigou'nun hocasıdır; matematikçi olarak yetişmişti.",
+gain:["Arz-talep “makası”nın, esnekliğin ve tüketici artığının ilk sistemli anlatımını görürsün.","Kısmi denge ve kısa dönem / uzun dönem ayrımını öğrenirsin.","Bugünkü ders kitabı dilinin nereden geldiğini anlarsın."],
+how:"Seçerek oku: V. Kitap (talep, arz ve değer dengesi). Matematik dipnotlarda ve eklerde."},
+{id:"veblen",lv:2,g:"klasik",tt:"Aylak Sınıfın Teorisi",t:"The Theory of the Leisure Class",a:"Thorstein Veblen",y:1899,k:"Kitap",tier:2,badge:"Kurumsal iktisadın kurucusu",m:0,trx:1,
+bio:"Thorstein Veblen (1857–1929) Chicago ve Stanford'da ders verdi; kurumsal iktisadın kurucusu kabul edilir.",
+gain:["“Gösterişçi tüketim” kavramını ve fiyatı arttıkça talebi artan “Veblen mallarını” öğrenirsin.","Tüketimin yalnızca fayda için değil statü için yapıldığını, iktisadın sosyolojiyle sınırını görürsün."],
+how:"İronik bir üslup; keyifli okunur."},
+{id:"keynes",lv:2,g:"klasik",tt:"İstihdam, Faiz ve Paranın Genel Teorisi",t:"The General Theory of Employment, Interest and Money",a:"John Maynard Keynes",y:1936,k:"Kitap",tier:1,badge:"Bretton Woods mimarı",m:1,trx:1,
+bio:"J. M. Keynes (1883–1946) 1944 Bretton Woods Konferansı'nda İngiliz heyetine başkanlık etti, IMF ve Dünya Bankası'nın kuruluşunda belirleyici oldu. Cambridge King's College'ın yatırımlarını yöneterek başarılı bir yatırımcı olarak da tanındı. Makroiktisadın kurucusu sayılır.",
+gain:["Efektif talep, çarpan, likidite tercihi ve “hayvansal güdüler” kavramlarını kaynağından öğrenirsin.","Büyük Buhran'a karşı devlet müdahalesinin teorik gerekçesini görürsün.","Bugün hâlâ süren Keynesyen–klasik tartışmanın kökünü anlarsın."],
+how:"Ünlü derecede zor bir kitap. Önce Mankiw Makro'da IS-LM'i bitir, sonra 1–3, 12 ve 24. bölümlerle başla."},
+{id:"schumpeter",lv:2,g:"klasik",tt:"Kapitalizm, Sosyalizm ve Demokrasi",t:"Capitalism, Socialism and Democracy",a:"Joseph A. Schumpeter",y:1942,k:"Kitap",tier:1,badge:"Avusturya maliye bakanı",m:0,trx:1,
+bio:"Joseph Schumpeter (1883–1950) 1919'da Avusturya maliye bakanı oldu, ardından bir bankanın başına geçti. 1932'den ölümüne kadar Harvard'da profesördü.",
+gain:["“Yaratıcı yıkım” kavramını ve girişimcinin büyümedeki rolünü öğrenirsin.","2025 Nobel'ini kazanan inovasyon temelli büyüme kuramlarının (Aghion–Howitt) fikrî kaynağını görürsün.","Demokrasinin “liderler arası rekabet” olarak tanımını okursun."],
+how:"II. Kısım'daki 7. bölüm (yaratıcı yıkım) mutlaka."},
+{id:"hayek_road",lv:2,g:"klasik",tt:"Kölelik Yolu",t:"The Road to Serfdom",a:"Friedrich A. Hayek",y:1944,k:"Kitap",tier:0,badge:"Nobel 1974",m:0,trx:1,
+bio:"Friedrich Hayek (1899–1992) 1974 Nobel İktisat Ödülü'nü Gunnar Myrdal ile paylaştı. Avusturya okulunun önde gelen ismi; London School of Economics'te ve Chicago'da ders verdi. Keynes'in en ünlü muhalifidir.",
+gain:["Merkezi planlamanın neden hem bilgi sorunu hem özgürlük sorunu yarattığına dair argümanı öğrenirsin.","Hukuk devleti ile ekonomik düzen arasındaki ilişkiyi düşünürsün."],
+how:"Polanyi'nin Büyük Dönüşüm'ü ile aynı yıl çıktı; ikisini art arda oku. Sonra Hayek'in 1945 makalesine geç."},
+{id:"polanyi",lv:2,g:"klasik",tt:"Büyük Dönüşüm",t:"The Great Transformation",a:"Karl Polanyi",y:1944,k:"Kitap",tier:3,badge:"İktisat tarihçisi",m:0,trx:1,
+bio:"Karl Polanyi (1886–1964) Viyana'da iktisat gazeteciliği yaptı, sonra İngiltere'de ve Kuzey Amerika'da akademisyen olarak çalıştı. İktisadi antropolojinin kurucularındandır.",
+gain:["Kendi kendini düzenleyen piyasanın tarihsel bir icat olduğu tezini öğrenirsin.","Emek, toprak ve paranın “metalaştırılmasının” toplumsal sonuçlarını görürsün.","Hayek ile karşılaştırınca 20. yüzyılın temel ekonomik-siyasi tartışmasını kavrarsın."],
+how:"Hayek'ten hemen sonra oku."},
+{id:"friedman_cf",lv:2,g:"klasik",tt:"Kapitalizm ve Özgürlük",t:"Capitalism and Freedom",a:"Milton Friedman",y:1962,k:"Kitap",tier:0,badge:"Nobel 1976",m:0,trx:1,
+bio:"Milton Friedman (1912–2006), 1976 Nobel İktisat Ödülü sahibi. Kitap Chicago Okulu'nun manifestosu sayılır; içindeki birçok öneri sonradan uygulamaya girdi (ABD'de zorunlu askerliğin 1973'te kaldırılması gibi).",
+gain:["Değişken kur, negatif gelir vergisi ve eğitim çeki gibi politika önerilerini öğrenirsin.","Ekonomik özgürlük ile siyasi özgürlük arasındaki bağa dair argümanı görürsün."],
+how:"Kısa ve net. Klasikler yolunun kapanışı."},
+/* ---------- SEVİYE 2: tema ---------- */
+{id:"bernanke21",lv:2,g:"tema",tt:"21. Yüzyıl Para Politikası",t:"21st Century Monetary Policy",a:"Ben S. Bernanke",y:2022,k:"Kitap",tier:0,badge:"Nobel 2022 · Fed Başkanı",m:1,
+bio:"Ben Bernanke 2006–2014 arasında ABD Merkez Bankası (Fed) başkanıydı ve 2008 krizini yönetti. 2022 Nobel İktisat Ödülü'nü Douglas Diamond ve Philip Dybvig ile bankalar ve finansal krizler üzerine çalışmalarıyla aldı.",
+gain:["1970'lerin enflasyonundan 2008 krizine ve pandemiye kadar Fed'in nasıl düşündüğünü içeriden görürsün.","Niceliksel genişleme, ileriye dönük yönlendirme ve enflasyon hedeflemesi gibi araçları öğrenirsin."],
+how:"Makro ders kitabından sonra oku. Merkez bankası haberlerini anlamanı sağlar."},
+{id:"reinhart",lv:2,g:"tema",tt:"Bu Sefer Farklı",t:"This Time Is Different",a:"Carmen M. Reinhart & Kenneth S. Rogoff",y:2009,k:"Kitap",tier:1,badge:"Dünya Bankası & IMF baş ekonomistleri",m:1,trx:1,
+bio:"Carmen Reinhart 2020–2022 arasında Dünya Bankası baş ekonomistiydi. Kenneth Rogoff 2001–2003 arasında IMF baş ekonomistiydi; aynı zamanda satranç büyükustası. İkisi de Harvard'da.",
+gain:["Sekiz yüzyıllık veriyle borç, bankacılık, kur ve enflasyon krizlerinin tekrar eden örüntülerini görürsün.","“Bu sefer farklı” yanılgısını tanımayı öğrenirsin."],
+how:"Veri ağırlıklı; bölümleri seçerek okuyabilirsin."},
+{id:"kindleberger",lv:2,g:"tema",tt:"Maniler, Panikler ve Çöküşler",t:"Manias, Panics, and Crashes",a:"Charles P. Kindleberger",y:1978,k:"Kitap",tier:1,badge:"Marshall Planı mimarlarından",m:1,
+bio:"Charles Kindleberger (1910–2003) savaştan sonra ABD Dışişleri Bakanlığı'nda Marshall Planı'nın hazırlanmasında kilit rol oynadı, sonra MIT'de uluslararası iktisat ve iktisat tarihi profesörü oldu.",
+gain:["Finansal krizlerin anatomisini öğrenirsin: tetikleyici olay, kredi genişlemesi, coşku, sıkıntı, panik ve çöküş.","Son kredi mercii kavramını tarihsel örneklerle görürsün."],
+how:"Galbraith'ten sonra, Minsky'den önce."},
+{id:"sen_dev",lv:2,g:"tema",tt:"Özgürlükle Kalkınma",t:"Development as Freedom",a:"Amartya Sen",y:1999,k:"Kitap",tier:0,badge:"Nobel 1998",m:0,trx:1,
+bio:"Amartya Sen 1998 Nobel İktisat Ödülü'nü refah iktisadına katkılarıyla aldı. Harvard'da profesör, Cambridge Trinity College'ın eski başkanı. BM İnsani Gelişme Endeksi'nin fikrî temellerini attı.",
+gain:["Kalkınmayı yalnızca GSYH artışı olarak değil, insanların yapabilirliklerinin genişlemesi olarak düşünürsün.","İşleyen demokrasilerde büyük kıtlıkların yaşanmadığı tezini öğrenirsin."],
+how:"Banerjee–Duflo ve Acemoğlu'dan sonra."},
+{id:"north",lv:2,g:"tema",tt:"Kurumlar, Kurumsal Değişim ve Ekonomik Performans",t:"Institutions, Institutional Change and Economic Performance",a:"Douglass C. North",y:1990,k:"Kitap",tier:0,badge:"Nobel 1993",m:1,
+bio:"Douglass North (1920–2015) 1993 Nobel İktisat Ödülü'nü Robert Fogel ile iktisat tarihini iktisat kuramı ve nicel yöntemlerle yeniden yorumladıkları için aldı.",
+gain:["Kurumları “oyunun kuralları” olarak tanımlamayı öğrenirsin: resmî kurallar, gayriresmî normlar ve yaptırımlar.","İşlem maliyetleri ve yol bağımlılığı kavramlarıyla ülkelerin neden farklı patikalara girdiğini görürsün."],
+how:"Kısa ama yoğun. Acemoğlu–Robinson'un akademik arka planı."},
+{id:"ostrom",lv:2,g:"tema",tt:"Müşterekleri Yönetmek",t:"Governing the Commons",a:"Elinor Ostrom",y:1990,k:"Kitap",tier:0,badge:"Nobel 2009",m:1,trx:1,
+bio:"Elinor Ostrom (1933–2012) 2009'da Nobel İktisat Ödülü'nü alan ilk kadındır; ortak kaynakların yönetimi üzerine saha çalışmalarıyla ödüllendirildi. Aslen bir siyaset bilimciydi.",
+gain:["“Müştereklerin trajedisi”ne ne devlet ne piyasa olan üçüncü bir çözüm görürsün: topluluk yönetimi.","Başarılı ortak kaynak kurumlarının sekiz tasarım ilkesini öğrenirsin; vakalar arasında Alanya balıkçıları da var."],
+how:"Vaka çalışmaları en değerli kısım."},
+{id:"deaton",lv:2,g:"tema",tt:"Büyük Kaçış",t:"The Great Escape",a:"Angus Deaton",y:2013,k:"Kitap",tier:0,badge:"Nobel 2015",m:0,
+bio:"Angus Deaton 2015 Nobel İktisat Ödülü'nü tüketim, yoksulluk ve refah analizleriyle aldı; Princeton'da profesör.",
+gain:["İnsanlığın yoksulluk ve erken ölümden “büyük kaçışını” ve bunun yarattığı eşitsizliği veriyle görürsün.","Dış yardımın sınırlarına dair kanıta dayalı bir eleştiri okursun."],
+how:"Banerjee–Duflo ile karşılaştır; Deaton deneysel yönteme eleştirel bakar."},
+{id:"mokyr",lv:2,g:"tema",tt:"Büyüme Kültürü",t:"A Culture of Growth",a:"Joel Mokyr",y:2016,k:"Kitap",tier:0,badge:"Nobel 2025",m:0,
+bio:"Joel Mokyr Northwestern Üniversitesi'nde iktisat tarihçisi. 2025 Nobel İktisat Ödülü'nün yarısını, teknolojik ilerleme yoluyla sürekli büyümenin ön koşullarını ortaya koyduğu için aldı (diğer yarısı Aghion ve Howitt'e).",
+gain:["Sanayi Devrimi'nin neden Avrupa'da ve o dönemde başladığını, fikirlerin dolaşımı ve “Edebiyat Cumhuriyeti” kavramlarıyla öğrenirsin.","Kültürün ve bilginin uzun dönem büyümedeki rolünü görürsün."],
+how:"Schumpeter ile Aghion–Howitt arasında köprü."},
+{id:"stiglitz",lv:2,g:"tema",tt:"Küreselleşme: Büyük Hayal Kırıklığı",t:"Globalization and Its Discontents",a:"Joseph E. Stiglitz",y:2002,k:"Kitap",tier:0,badge:"Nobel 2001 · Dünya Bankası",m:0,trx:1,
+bio:"Joseph Stiglitz 2001 Nobel İktisat Ödülü'nü asimetrik bilgi altındaki piyasalar üzerine çalışmalarıyla aldı. Clinton döneminde Ekonomik Danışmanlar Konseyi başkanı, 1997–2000 arasında Dünya Bankası baş ekonomistiydi.",
+gain:["1990'ların Asya, Rusya ve Latin Amerika krizlerinde IMF reçetelerinin içeriden eleştirisini okursun.","Sermaye hareketlerinin serbestleştirilmesinin ve yapısal uyum programlarının risklerini düşünürsün."],
+how:"Tek taraflı bir tanıklık; Rodrik ve Reinhart–Rogoff ile dengele."},
+{id:"piketty",lv:2,g:"tema",tt:"Yirmi Birinci Yüzyılda Kapital",t:"Le Capital au XXIe siècle",a:"Thomas Piketty",y:2013,k:"Kitap",tier:3,badge:"Paris İktisat Okulu",m:1,trx:1,
+bio:"Thomas Piketty Paris İktisat Okulu (PSE) ve EHESS'te profesör; Dünya Eşitsizlik Veritabanı'nın kurucularından. 2013'te Avrupa İktisat Derneği'nin Yrjö Jahnsson Ödülü'nü aldı.",
+gain:["İki yüzyıllık vergi kayıtlarıyla gelir ve servet eşitsizliğinin uzun dönem seyrini görürsün.","r > g (sermaye getirisi büyüme hızından yüksek) dinamiğini ve bu tez üzerindeki tartışmayı öğrenirsin."],
+how:"Uzun; I. ve III. kısımlar yeter. Eleştirilerini de oku (ör. Acemoğlu–Robinson'un 2015 yanıtı)."},
+{id:"thaler",lv:2,g:"tema",tt:"Yanlış Davranmak",t:"Misbehaving: The Making of Behavioral Economics",a:"Richard H. Thaler",y:2015,k:"Kitap",tier:0,badge:"Nobel 2017",m:0,
+bio:"Richard Thaler 2017 Nobel İktisat Ödülü'nü davranışsal iktisada katkılarıyla aldı; Chicago Üniversitesi'nde profesör. Cass Sunstein ile birlikte “Dürtme” (Nudge) kitabının yazarı.",
+gain:["Sahiplik etkisi, zihinsel muhasebe ve öz-denetim sorunlarını ortaya çıkış hikâyeleriyle öğrenirsin.","“Dürtme” ile kamu politikası tasarımının mantığını görürsün."],
+how:"Kahneman'dan sonra; akıcı ve esprili."},
+{id:"akerlof_shiller",lv:2,g:"tema",tt:"Hayvansal Güdüler",t:"Animal Spirits",a:"George A. Akerlof & Robert J. Shiller",y:2009,k:"Kitap",tier:0,badge:"Nobel 2001 & 2013",m:0,
+bio:"George Akerlof 2001 Nobel'ini asimetrik bilgi (“limonlar piyasası”) çalışmasıyla, Robert Shiller 2013 Nobel'ini varlık fiyatlarının ampirik analiziyle aldı. Shiller Case–Shiller konut fiyat endeksiyle de tanınır.",
+gain:["Güven, adalet duygusu, para yanılsaması ve anlatıların makroekonomiyi nasıl etkilediğini öğrenirsin.","2008 krizini davranışsal bir çerçeveyle okursun."],
+how:"Keynes'in “hayvansal güdüler” kavramının modern yorumu."},
+
+/* ---------- SEVİYE 3 ---------- */
+{id:"romer_d",lv:3,tt:"İleri Makroiktisat",t:"Advanced Macroeconomics",a:"David Romer",y:1996,k:"Ders kitabı",tier:3,badge:"Berkeley",m:2,pick:"Yüksek lisans makro",
+bio:"David Romer Berkeley'de profesör; eşi Christina Romer ile (Obama'nın Ekonomik Danışmanlar Konseyi başkanı) çok sayıda ortak çalışması var. Nobel'li Paul Romer ile karıştırılmamalı.",
+gain:["Solow, Ramsey–Cass–Koopmans ve Diamond (kuşakların örtüşmesi) modellerini türetirsin.","Endojen büyüme, gerçek iş çevrimleri, nominal katılıklar, tüketim, yatırım, işsizlik ve para politikasını model düzeyinde öğrenirsin."],
+how:"Yüksek lisans makronun giriş kitabı. Bölüm sonu problemlerini çöz."},
+{id:"jehle_reny",lv:3,tt:"İleri Mikroiktisat Kuramı",t:"Advanced Microeconomic Theory",a:"Geoffrey A. Jehle & Philip J. Reny",y:1998,k:"Ders kitabı",tier:3,badge:"Chicago",m:3,
+bio:"Philip Reny Chicago Üniversitesi'nde oyun teorisi ve mekanizma tasarımı alanında profesör. Geoffrey Jehle Vassar College'da iktisat profesörü.",
+gain:["Tüketici ve üretici teorisini teorem–ispat düzeninde kurarsın.","Genel denge, refah teoremleri, sosyal seçim ve oyun teorisine girersin.","Kitabın matematik eki, matematik bilgini iktisada aktarmanın en hızlı yolu."],
+how:"Matematik altyapısı olan biri için Varian'dan sonra en doğal adım; MWG'ye köprü."},
+{id:"gibbons",lv:3,tt:"Uygulamalı İktisatçılar için Oyun Teorisi",t:"Game Theory for Applied Economists",a:"Robert Gibbons",y:1992,k:"Ders kitabı",tier:3,badge:"MIT",m:2,
+bio:"Robert Gibbons MIT Sloan'da örgütsel iktisat profesörü. Kitabı kısa ve net anlatımıyla oyun teorisine girişin klasikleri arasında.",
+gain:["Statik/dinamik ve tam/eksik bilgili oyunları dört bölümde öğrenirsin: Nash, alt-oyun mükemmel, Bayesçi Nash ve mükemmel Bayesçi denge.","Cournot, Bertrand, pazarlık, açık artırma ve sinyalleşme modellerini çözersin."],
+how:"İnce bir kitap; alıştırmalarıyla birkaç haftada bitirilebilir."},
+{id:"arrow_social",lv:3,tt:"Toplumsal Tercih ve Bireysel Değerler",t:"Social Choice and Individual Values",a:"Kenneth J. Arrow",y:1951,k:"Kitap",tier:0,badge:"Nobel 1972",m:3,
+bio:"Kenneth Arrow (1921–2017) 1972 Nobel İktisat Ödülü'nü John Hicks ile genel denge ve refah teorisine katkılarıyla aldı; uzun süre bu ödülün en genç sahibi olarak kaldı. Doktora tezinden doğan bu kitap sosyal seçim kuramını kurdu.",
+gain:["Arrow imkânsızlık teoremini öğrenirsin: makul aksiyomları birlikte sağlayan bir toplumsal tercih kuralı yoktur.","Aksiyomatik yöntemin iktisatta nasıl kullanıldığını ilk elden görürsün."],
+how:"Kısa ve tamamen matematiksel. Matematik geçmişi olan biri için iktisada en keyifli girişlerden."},
+{id:"aghion_howitt",lv:3,tt:"Büyüme İktisadı",t:"The Economics of Growth",a:"Philippe Aghion & Peter Howitt",y:2009,k:"Ders kitabı",tier:0,badge:"Nobel 2025",m:2,
+bio:"Philippe Aghion (Collège de France, INSEAD, LSE) ve Peter Howitt (Brown) 2025 Nobel İktisat Ödülü'nün yarısını yaratıcı yıkım yoluyla sürekli büyüme kuramıyla paylaştı. 1992 tarihli ortak makaleleri Schumpeter'in fikrini matematiksel bir modele dönüştürdü.",
+gain:["Schumpeteryen büyüme modelini öğrenirsin: inovasyon eski teknolojileri ve firmaları yerinden eder.","Rekabet, teknoloji sınırına uzaklık, kurumlar ve büyüme arasındaki ilişkiyi model düzeyinde görürsün."],
+how:"Romer'ın büyüme bölümlerinden sonra."},
+{id:"wooldridge",lv:3,tt:"Ekonometriye Giriş",t:"Introductory Econometrics: A Modern Approach",a:"Jeffrey M. Wooldridge",y:2000,k:"Ders kitabı",tier:3,badge:"Michigan State",m:2,
+bio:"Jeffrey Wooldridge Michigan State Üniversitesi'nde profesör; panel veri ekonometrisinde en çok atıf alan isimlerden. Bu kitap dünyada en yaygın kullanılan lisans ekonometri kitaplarından.",
+gain:["Regresyonu, varsayımlarını ve varsayımlar bozulunca ne olduğunu öğrenirsin.","Zaman serisi ve panel veriyle gerçek iktisadi verileri analiz edersin."],
+how:"Okurken R ya da Python'la kitabın veri setleri üzerinde çalış."},
+{id:"angrist_pischke",lv:3,tt:"Çoğunlukla Zararsız Ekonometri",t:"Mostly Harmless Econometrics",a:"Joshua D. Angrist & Jörn-Steffen Pischke",y:2009,k:"Ders kitabı",tier:0,badge:"Nobel 2021",m:2,
+bio:"Joshua Angrist (MIT) 2021 Nobel İktisat Ödülü'nü Guido Imbens ile nedensel ilişkilerin analizine yöntemsel katkılarıyla aldı (ödülün diğer yarısı David Card'a). Pischke LSE'de profesör.",
+gain:["Korelasyonla nedenselliği ayırmanın araçlarını öğrenirsin: araç değişkenler, farkların farkı, regresyon süreksizliği.","Modern uygulamalı iktisat makalelerini okuyabilecek hâle gelirsin."],
+how:"Daha kolay versiyonu Mastering ’Metrics (2014). Wooldridge'den sonra."},
+{id:"minsky",lv:3,tt:"İstikrarsız Bir Ekonomiyi İstikrara Kavuşturmak",t:"Stabilizing an Unstable Economy",a:"Hyman P. Minsky",y:1986,k:"Kitap",tier:3,badge:"“Minsky anı”",m:1,
+bio:"Hyman Minsky (1919–1996) St. Louis'deki Washington Üniversitesi'nde ve Levy Enstitüsü'nde çalıştı. Hayattayken ana akımın kenarındaydı; 2008 krizinden sonra “Minsky anı” deyimi finans dünyasının diline girdi.",
+gain:["Finansal istikrarsızlık hipotezini öğrenirsin: istikrar dönemleri giderek riskli finansmanı (korunmalı → spekülatif → Ponzi) besler.","Krizlerin dışsal şok değil sistemin içsel dinamiği olduğu görüşünü tanırsın."],
+how:"Zor yazılmış; önce Kindleberger'i bitir."},
+{id:"friedman_schwartz",lv:3,tt:"ABD'nin Parasal Tarihi, 1867–1960",t:"A Monetary History of the United States, 1867–1960",a:"Milton Friedman & Anna J. Schwartz",y:1963,k:"Kitap",tier:0,badge:"Nobel 1976",m:1,
+bio:"Friedman'ın Nobel'ine giden çalışmaların merkezinde. Anna Schwartz (1915–2012) NBER'de yetmiş yıla yakın çalışmış bir para tarihçisiydi.",
+gain:["Büyük Buhran'ın parasal açıklamasını öğrenirsin: Fed para arzının yaklaşık üçte bir daralmasına izin verdi.","Bernanke'nin 2002'de Friedman'a söylediği sözün arka planını anlarsın: “Büyük Buhran konusunda haklısınız, biz yaptık. Çok üzgünüz.”"],
+how:"7. bölüm (The Great Contraction) ayrı kitap olarak da basıldı; oradan başla."},
+
+/* ---------- SEVİYE 4 ---------- */
+{id:"mwg",lv:4,tt:"Mikroiktisat Kuramı",t:"Microeconomic Theory",a:"Andreu Mas-Colell, Michael D. Whinston & Jerry R. Green",y:1995,k:"Doktora ders kitabı",tier:1,badge:"Katalonya ekonomi bakanı",m:3,pick:"Doktora mikro standardı",
+bio:"Andreu Mas-Colell Harvard'da profesördü; 2010–2016 arasında Katalonya Ekonomi ve Bilgi Bakanı olarak görev yaptı. Michael Whinston MIT'de, Jerry Green Harvard'da profesör. Dünyadaki doktora mikro derslerinin standart kitabı (“MWG”).",
+gain:["Tercih, seçim, belirsizlik altında karar, oyun teorisi, piyasa gücü, genel denge, refah teoremleri ve mekanizma tasarımını tam titizlikle öğrenirsin.","Teorik iktisat makalelerinin dilini ve ispat tekniklerini edinirsin."],
+how:"Okunmaz, çalışılır. Bir bölümün alıştırmalarını bitirmeden sonrakine geçme."},
+{id:"ljungqvist_sargent",lv:4,tt:"Özyinelemeli Makroiktisat Kuramı",t:"Recursive Macroeconomic Theory",a:"Lars Ljungqvist & Thomas J. Sargent",y:2000,k:"Doktora ders kitabı",tier:0,badge:"Nobel 2011",m:3,
+bio:"Thomas Sargent (NYU) 2011 Nobel İktisat Ödülü'nü Christopher Sims ile makroekonomide neden-sonuç ilişkileri üzerine ampirik araştırmalarıyla aldı; rasyonel beklentiler devriminin öncülerindendir. Lars Ljungqvist Stockholm İktisat Okulu'nda.",
+gain:["Dinamik programlama, rasyonel beklentiler, arama-eşleşme modelleri, varlık fiyatlama ve optimal politika araçlarını öğrenirsin.","Modern makro araştırmasının araç kutusunu kurarsın."],
+how:"Kod örnekleri için Sargent'in açık kaynak projesi QuantEcon ile birlikte çalış."},
+{id:"slp",lv:4,tt:"İktisadi Dinamikte Özyinelemeli Yöntemler",t:"Recursive Methods in Economic Dynamics",a:"Nancy L. Stokey & Robert E. Lucas Jr. (Edward C. Prescott ile)",y:1989,k:"Doktora ders kitabı",tier:0,badge:"Nobel 1995 & 2004",m:3,
+bio:"Robert Lucas (1937–2023) 1995 Nobel'ini rasyonel beklentiler hipotezini geliştirip uyguladığı için; Edward Prescott (1940–2022) 2004 Nobel'ini Finn Kydland ile politikanın zaman tutarlılığı ve iş çevrimleri üzerine aldı. Nancy Stokey Chicago Üniversitesi'nde profesör.",
+gain:["Bellman denklemini, büzülme dönüşümlerini ve sabit nokta argümanlarını iktisadi problemlere uygularsın.","Stokastik dinamik programlamanın ölçü teorisi temellerini görürsün."],
+how:"Fonksiyonel analiz ve ölçü teorisi biliyorsan çok keyifli; matematikçi bakışına en yakın makro kitabı."},
+{id:"fudenberg_tirole",lv:4,tt:"Oyun Teorisi",t:"Game Theory",a:"Drew Fudenberg & Jean Tirole",y:1991,k:"Doktora ders kitabı",tier:0,badge:"Nobel 2014",m:3,
+bio:"Jean Tirole (Toulouse İktisat Okulu) 2014 Nobel İktisat Ödülü'nü piyasa gücü ve düzenleme analiziyle aldı. Drew Fudenberg MIT'de profesör; oyun teorisi ve öğrenme alanının öncülerinden.",
+gain:["Dinamik ve tekrarlanan oyunları, “folk” teoremini, eksik bilgiyi, itibar modellerini ve mekanizma tasarımını ileri düzeyde öğrenirsin."],
+how:"Gibbons'tan sonra."},
+{id:"acemoglu_growth",lv:4,tt:"Modern İktisadi Büyümeye Giriş",t:"Introduction to Modern Economic Growth",a:"Daron Acemoğlu",y:2009,k:"Doktora ders kitabı",tier:0,badge:"Nobel 2024",m:3,
+bio:"Acemoğlu bu kitabı MIT'deki doktora büyüme dersinden geliştirdi. 2005'te 40 yaş altı iktisatçılara verilen John Bates Clark Madalyası'nı, 2024'te Nobel İktisat Ödülü'nü aldı.",
+gain:["Neoklasik ve endojen büyüme modellerini optimal kontrol ve dinamik programlamayla kurarsın.","Teknoloji, kurumlar ve siyasal iktisadın büyümeyle ilişkisini model düzeyinde görürsün."],
+how:"Matematik ekleri (diferansiyel denklemler, optimal kontrol) kitabın içinde."},
+{id:"obstfeld_rogoff",lv:4,tt:"Uluslararası Makroiktisadın Temelleri",t:"Foundations of International Macroeconomics",a:"Maurice Obstfeld & Kenneth Rogoff",y:1996,k:"Doktora ders kitabı",tier:1,badge:"İki IMF baş ekonomisti",m:3,
+bio:"Maurice Obstfeld (Berkeley) 2015–2018, Kenneth Rogoff (Harvard) 2001–2003 arasında IMF baş ekonomistliği yaptı. Obstfeld ayrıca Obama döneminde Ekonomik Danışmanlar Konseyi üyesiydi.",
+gain:["Cari açık, döviz kuru, uluslararası sermaye hareketleri ve egemen borç sorunlarını mikro temelli modellerle öğrenirsin.","Türkiye gibi açık ve gelişmekte olan ekonomileri analiz etmek için gereken teorik çerçeveyi kurarsın."],
+how:"Romer'dan sonra."},
+{id:"woodford",lv:4,tt:"Faiz ve Fiyatlar",t:"Interest and Prices",a:"Michael Woodford",y:2003,k:"Doktora ders kitabı",tier:0,badge:"Nobel 2026",m:3,
+bio:"Michael Woodford Columbia Üniversitesi'nde profesör. 2026 Nobel İktisat Ödülü'nü Robert Hall ile makroekonomik istikrar politikası üzerine çalışmalarıyla aldı. Bu kitap Yeni Keynesyen para politikası kuramının temel eseridir.",
+gain:["Yeni Keynesyen modeli, Taylor kuralını ve enflasyon hedeflemesinin teorik temelini öğrenirsin.","Merkez bankalarının “beklenti yönetimi” ve ileriye dönük yönlendirme dilini anlarsın."],
+how:"Ağır bir kitap. Önce Romer'ın para politikası bölümlerini, daha kolay bir giriş için Jordi Galí'nin Monetary Policy, Inflation, and the Business Cycle kitabını oku."},
+{id:"debreu",lv:4,tt:"Değer Kuramı",t:"Theory of Value: An Axiomatic Analysis of Economic Equilibrium",a:"Gérard Debreu",y:1959,k:"Kitap",tier:0,badge:"Nobel 1983",m:3,
+bio:"Gérard Debreu (1921–2004) Fransız matematikçi ve iktisatçı; Bourbaki geleneğinde yetişti. 1983 Nobel İktisat Ödülü'nü genel denge kuramını titizlikle yeniden kurduğu için aldı.",
+gain:["Genel dengeyi yüz sayfada, aksiyomatik ve topolojik olarak kurarsın: mallar, fiyatlar, tüketiciler, üreticiler, denge.","Sabit nokta teoremlerinin iktisatta varlık ispatlarında nasıl kullanıldığını görürsün."],
+how:"İktisadın “Bourbaki”si. Kısa ama yavaş okunur."},
+{id:"vnm",lv:4,tt:"Oyunlar Kuramı ve İktisadi Davranış",t:"Theory of Games and Economic Behavior",a:"John von Neumann & Oskar Morgenstern",y:1944,k:"Kitap",tier:2,badge:"Oyun teorisinin kurucuları",m:3,
+bio:"John von Neumann (1903–1957) 20. yüzyılın en büyük matematikçilerinden; kuantum mekaniğinin matematiksel temelleri, bilgisayar mimarisi ve Manhattan Projesi'ndeki katkılarıyla tanınır. Oskar Morgenstern Princeton'da iktisatçıydı.",
+gain:["Oyun teorisini kurucu metninden öğrenirsin: iki kişilik sıfır toplamlı oyunlar ve minimaks teoremi.","Beklenen fayda teorisinin aksiyomlarını görürsün; belirsizlik altında karar kuramının temeli."],
+how:"Tamamı gerekmez: giriş bölümü ve beklenen fayda kısmı yeter. Sonra Nash'in 1950 makalesine geç."},
+{id:"samuelson_found",lv:4,tt:"İktisadi Analizin Temelleri",t:"Foundations of Economic Analysis",a:"Paul A. Samuelson",y:1947,k:"Kitap",tier:0,badge:"Nobel 1970",m:3,
+bio:"Samuelson'ın Harvard doktora tezinden doğan kitap. Nobel komitesi ödül gerekçesinde iktisadi analizin bilimsel düzeyini yükseltmesini vurguladı.",
+gain:["İktisadın büyük kısmını kısıtlı optimizasyon ve karşılaştırmalı statik olarak yazmayı öğrenirsin.","Açıklanmış tercih ve denge istikrarı (karşılık ilkesi) fikirlerini kaynağından görürsün."],
+how:"Bugün daha çok tarihî önemi için okunur; seçerek oku."},
+
+/* ---------- SEVİYE 5 ---------- */
+{id:"hayek1945",lv:5,tt:"Bilginin Toplumda Kullanımı",t:"The Use of Knowledge in Society",a:"F. A. Hayek",y:1945,k:"Makale · American Economic Review",tier:0,badge:"Nobel 1974",m:0,pick:"İlk makale",
+bio:"Friedrich Hayek, 1974 Nobel sahibi. Bu makale AER'in yüzyılın en önemli makaleleri arasında saydığı çalışmalardandır.",
+gain:["Fiyat sisteminin dağınık bilgiyi bir araya getiren bir iletişim mekanizması olduğunu görürsün.","Bilgi iktisadının ve mekanizma tasarımının fikrî çıkış noktasını tanırsın."],
+how:"Yalnızca 12 sayfa ve teknik değil; Seviye 2'deyken bile okunabilir."},
+{id:"coase",lv:5,tt:"Firmanın Doğası · Sosyal Maliyet Sorunu",t:"The Nature of the Firm (1937) · The Problem of Social Cost (1960)",a:"Ronald H. Coase",y:1937,k:"Makale · Economica / J. of Law and Economics",tier:0,badge:"Nobel 1991",m:0,
+bio:"Ronald Coase (1910–2013) 1991 Nobel İktisat Ödülü'nü işlem maliyetleri ve mülkiyet haklarının ekonominin kurumsal yapısındaki önemini gösterdiği için aldı. Ödül büyük ölçüde bu iki makaleye dayanır.",
+gain:["Firmaların neden var olduğunu öğrenirsin: piyasayı kullanmanın bir maliyeti (işlem maliyeti) vardır.","Coase teoremini öğrenirsin: işlem maliyeti yoksa dışsallıklar pazarlıkla çözülür; bu yüzden asıl mesele işlem maliyetleridir."],
+how:"Matematiksiz; hukuk ve iktisat alanının temeli."},
+{id:"nash1950",lv:5,tt:"n-Kişilik Oyunlarda Denge Noktaları",t:"Equilibrium Points in n-Person Games",a:"John F. Nash Jr.",y:1950,k:"Makale · PNAS",tier:0,badge:"Nobel 1994 · Abel 2015",m:3,
+bio:"John Nash (1928–2015) 1994 Nobel İktisat Ödülü'nü Harsanyi ve Selten ile oyun teorisindeki denge analizi için aldı; 2015'te Louis Nirenberg ile Abel Ödülü'nü kısmi diferansiyel denklemler üzerine çalışmalarıyla kazandı. Bu makaleyi 21 yaşında yazdı.",
+gain:["Nash dengesinin varlığını Kakutani sabit nokta teoremiyle ispatlayan bir sayfalık makaleyi okursun.","Neredeyse tüm stratejik etkileşim modellerinin temel kavramını kaynağından görürsün."],
+how:"Bir sayfa. Ardından Brouwer teoremiyle yapılan 1951 Annals of Mathematics versiyonunu (Non-Cooperative Games) oku."},
+{id:"arrow_debreu1954",lv:5,tt:"Rekabetçi Ekonomide Dengenin Varlığı",t:"Existence of an Equilibrium for a Competitive Economy",a:"Kenneth J. Arrow & Gérard Debreu",y:1954,k:"Makale · Econometrica",tier:0,badge:"Nobel 1972 & 1983",m:3,
+bio:"İki Nobel'li yazarın ortak makalesi, Walras'tan beri açık duran soruyu kesin olarak yanıtladı.",
+gain:["Rekabetçi genel dengenin hangi koşullarda var olduğunun ispatını görürsün.","“Piyasalar tutarlı bir fiyat sistemi üretebilir mi” sorusunun matematiksel cevabını okursun."],
+how:"Debreu'nun Değer Kuramı'ndan sonra."},
+{id:"solow1956",lv:5,tt:"İktisadi Büyüme Kuramına Bir Katkı",t:"A Contribution to the Theory of Economic Growth",a:"Robert M. Solow",y:1956,k:"Makale · Quarterly Journal of Economics",tier:0,badge:"Nobel 1987",m:2,
+bio:"Robert Solow (1924–2023) MIT'de profesördü ve 1987 Nobel İktisat Ödülü'nü bu büyüme kuramı için aldı. Doktora öğrencileri arasından birçok Nobel'li çıktı.",
+gain:["Neoklasik büyüme modelini kaynağından türetirsin: sermaye birikimi, azalan getiri, durağan durum.","Uzun dönemde kişi başı büyümenin ancak teknolojik ilerlemeyle sürebileceği sonucunu görürsün."],
+how:"Diferansiyel denklem bilgin yeterli; çok temiz bir makale."},
+{id:"friedman1968",lv:5,tt:"Para Politikasının Rolü",t:"The Role of Monetary Policy",a:"Milton Friedman",y:1968,k:"Makale · American Economic Review",tier:0,badge:"Nobel 1976",m:0,
+bio:"Friedman'ın Amerikan İktisat Derneği başkanlık konuşması.",
+gain:["“Doğal işsizlik oranı” kavramını ve uzun dönemde enflasyonla işsizlik arasında kalıcı bir ödünleşim olmadığı tezini öğrenirsin.","1970'lerin stagflasyonunu önceden haber veren argümanı görürsün."],
+how:"Kısa ve matematiksiz; makro kitabındaki Phillips eğrisi bölümünden sonra."},
+{id:"akerlof1970",lv:5,tt:"Limonlar Piyasası",t:"The Market for “Lemons”: Quality Uncertainty and the Market Mechanism",a:"George A. Akerlof",y:1970,k:"Makale · Quarterly Journal of Economics",tier:0,badge:"Nobel 2001",m:1,
+bio:"Akerlof'un Nobel'ine giden makale; yayımlanmadan önce birkaç dergi tarafından “fazla basit” bulunarak reddedildi.",
+gain:["Asimetrik bilginin bir piyasayı nasıl çökertebileceğini (ters seçim) ikinci el araba örneğiyle öğrenirsin.","Sigorta, kredi ve işgücü piyasalarındaki bilgi sorunlarının mantığını kavrarsın."],
+how:"Kısa ve sezgisel; Seviye 2'den sonra okunabilir."},
+{id:"lucas1976",lv:5,tt:"Ekonometrik Politika Değerlendirmesi: Bir Eleştiri",t:"Econometric Policy Evaluation: A Critique",a:"Robert E. Lucas Jr.",y:1976,k:"Makale · Carnegie-Rochester Conference Series",tier:0,badge:"Nobel 1995",m:2,
+bio:"“Lucas kritiği” olarak bilinen makale makroiktisadı mikro temellere yöneltti. Lucas 1995 Nobel'ini rasyonel beklentiler üzerine çalışmalarıyla aldı.",
+gain:["Politika değişince insanların davranışının da değiştiğini, bu yüzden geçmiş verideki ilişkilerin politika değerlendirmesinde yanıltabileceğini öğrenirsin.","Modern makronun neden “derin parametreler” ve rasyonel beklentilerle kurulduğunu anlarsın."],
+how:"Friedman 1968'den sonra."},
+{id:"kydland_prescott1977",lv:5,tt:"Takdir Yerine Kurallar",t:"Rules Rather than Discretion: The Inconsistency of Optimal Plans",a:"Finn E. Kydland & Edward C. Prescott",y:1977,k:"Makale · Journal of Political Economy",tier:0,badge:"Nobel 2004",m:2,
+bio:"Kydland ve Prescott 2004 Nobel İktisat Ödülü'nü bu makalenin başlattığı zaman tutarlılığı çalışmaları ve iş çevrimleri kuramıyla aldı.",
+gain:["Zaman tutarsızlığı sorununu öğrenirsin: bugün optimal görünen plan yarın bozulmaya teşvik yaratır.","Bağımsız merkez bankası ve kurala dayalı para politikasının teorik gerekçesini görürsün."],
+how:"Merkez bankası bağımsızlığı tartışmalarını anlamanın anahtarı."},
+{id:"kt1979",lv:5,tt:"Beklenti Teorisi",t:"Prospect Theory: An Analysis of Decision under Risk",a:"Daniel Kahneman & Amos Tversky",y:1979,k:"Makale · Econometrica",tier:0,badge:"Nobel 2002",m:2,
+bio:"Econometrica tarihinin en çok atıf alan makalelerinden. Tversky 1996'da öldüğü için Nobel'i paylaşamadı; ödül yalnız yaşayanlara verilir.",
+gain:["Kayıptan kaçınma, referans noktası ve olasılık ağırlıklandırmasıyla beklenen fayda teorisine bir alternatif öğrenirsin.","Deneysel bulguyu matematiksel bir karar modeline dönüştürmeyi görürsün."],
+how:"Beklenen fayda aksiyomlarını öğrendikten sonra oku."},
+{id:"diamond_dybvig1983",lv:5,tt:"Banka Hücumları, Mevduat Sigortası ve Likidite",t:"Bank Runs, Deposit Insurance, and Liquidity",a:"Douglas W. Diamond & Philip H. Dybvig",y:1983,k:"Makale · Journal of Political Economy",tier:0,badge:"Nobel 2022",m:2,
+bio:"Douglas Diamond (Chicago) ve Philip Dybvig (St. Louis'deki Washington Üniversitesi) bu model için 2022 Nobel'ini Bernanke ile paylaştı.",
+gain:["Bankaların neden var olduğunu ve neden doğaları gereği kırılgan olduklarını öğrenirsin: çoklu denge ve kendini gerçekleştiren panik.","Mevduat sigortasının ve son kredi merciinin teorik gerekçesini görürsün."],
+how:"Basit bir oyun teorisi modeli; Gibbons'tan sonra rahat okunur."},
+{id:"romer1990",lv:5,tt:"Endojen Teknolojik Değişim",t:"Endogenous Technological Change",a:"Paul M. Romer",y:1990,k:"Makale · Journal of Political Economy",tier:0,badge:"Nobel 2018 · Dünya Bankası",m:2,
+bio:"Paul Romer 2018 Nobel İktisat Ödülü'nü teknolojik yeniliği uzun dönem makro analize kattığı için William Nordhaus ile paylaştı; 2016–2018 arasında Dünya Bankası baş ekonomistiydi.",
+gain:["Fikirlerin rakip olmayan mallar olduğunu ve bunun artan getiri ile sürekli büyümeyi nasıl mümkün kıldığını öğrenirsin.","Solow modelinde dışarıdan verilen teknolojiyi modelin içine almayı görürsün."],
+how:"Solow 1956'dan sonra."}
+];
+
+const PATHS=[
+ {id:"ana",n:"Ana yol",d:"Sıfırdan doktora çekirdeğine en kısa güvenilir rota.",w:"Kimin için: İktisadı sistemli öğrenmek isteyen herkes. Sezgi kitaplarıyla başlar, Mankiw ile disipline girer, Varian ve Mankiw Makro ile araçları kurar, MWG ve Ljungqvist–Sargent ile doktora düzeyine çıkar.",
+  ids:["heilbroner","hazlitt","chang_guide","wnf","mankiw_p","rodrik","varian","mankiw_m","smith","keynes","jehle_reny","romer_d","gibbons","wooldridge","angrist_pischke","mwg","ljungqvist_sargent"]},
+ {id:"klasik",n:"Klasikler yolu",d:"İbn Haldun'dan Friedman'a, fikirler tarihi kronolojik sırayla.",w:"Kimin için: Felsefe ve fikir tarihiyle ilgilenenler. Heilbroner haritayı verir; sonra her büyük düşünürü kendi kitabından okursun. Hayek ile Polanyi'yi art arda okumak bu yolun doruk noktası.",
+  ids:["heilbroner","ibn_haldun","smith","malthus","ricardo","marx","marshall","veblen","keynes","schumpeter","hayek_road","hayek1945","polanyi","friedman_cf"]},
+ {id:"matematik",n:"Matematikçi yolu",d:"Analiz, topoloji ve ispat bilenler için kuramın aksiyomatik çekirdeği.",w:"Kimin için: Matematik altyapısı güçlü olanlar. Sezgiyi Varian'dan alır, sonra doğrudan Arrow, von Neumann, Nash ve Debreu'nun kurucu metinlerine ve doktora kitaplarına geçersin. Sabit nokta teoremleri, konvekslik ve dinamik programlama bu yolun ana araçları.",
+  ids:["simon_blume","varian","arrow_social","gibbons","jehle_reny","vnm","nash1950","debreu","arrow_debreu1954","mwg","fudenberg_tirole","slp","ljungqvist_sargent"]},
+ {id:"kriz",n:"Para, kriz ve makro",d:"1929'dan 2008'e: paranın, bankaların ve merkez bankalarının iktisadı.",w:"Kimin için: Enflasyon, faiz, kur ve krizleri anlamak isteyenler. Tarihsel krizlerle başlar, Keynes–Friedman tartışmasından geçer, modern merkez bankacılığının kuramına (Woodford) varır.",
+  ids:["galbraith","mankiw_m","keynes","friedman_schwartz","friedman1968","kindleberger","minsky","reinhart","akerlof_shiller","bernanke21","blanchard","lucas1976","kydland_prescott1977","diamond_dybvig1983","obstfeld_rogoff","woodford"]},
+ {id:"kalkinma",n:"Kalkınma ve kurumlar",d:"Uluslar neden zengin ya da yoksul olur?",w:"Kimin için: Ülkelerin kaderiyle, tarihle ve kurumlarla ilgilenenler. Acemoğlu–Robinson ile başlar, saha kanıtı (Banerjee–Duflo, Deaton), kurumlar (North, Coase, Ostrom) ve büyüme kuramı (Mokyr, Aghion–Howitt, Romer) ile derinleşir.",
+  ids:["wnf","poor_econ","sen_dev","deaton","north","coase","ostrom","mokyr","stiglitz","rodrik","piketty","aghion_howitt","romer1990","acemoglu_growth"]},
+ {id:"davranis",n:"Davranışsal iktisat",d:"İnsanlar ders kitabındaki gibi davranmadığında ne olur?",w:"Kimin için: Psikoloji ile iktisadın kesişimini merak edenler. Kahneman ile başlar, kuramın kaynağı olan 1970 ve 1979 makalelerine iner.",
+  ids:["kahneman","thaler","akerlof_shiller","akerlof1970","kt1979"]}
+];
+
+const MODELS=[
+ {n:"Arz–talep ve kısmi denge",w:"Alfred Marshall",y:"1890",lv:1,d:"Fiyat, alıcıların ve satıcıların planlarını eşitleyen noktada oluşur; eğrilerin kayması fiyatı ve miktarı değiştirir.",b:["mankiw_p","marshall"]},
+ {n:"Karşılaştırmalı üstünlük",w:"David Ricardo",y:"1817",lv:1,d:"Bir ülke her şeyi daha verimli üretse bile, fırsat maliyetinin düşük olduğu alanda uzmanlaşıp ticaret yapmak iki tarafı da zenginleştirir.",b:["ricardo","mankiw_p"]},
+ {n:"Tüketici seçimi ve fayda maksimizasyonu",w:"Slutsky, Hicks, Samuelson",y:"1915–1947",lv:2,d:"Birey bütçe kısıtı altında faydasını maksimize eder; fiyat değişiminin etkisi ikame ve gelir etkisine ayrılır (Slutsky denklemi).",b:["varian","jehle_reny","samuelson_found"]},
+ {n:"IS–LM",w:"John Hicks (Keynes'i yorumlayarak)",y:"1937",lv:2,d:"Mal piyasası (IS) ile para piyasasının (LM) kesişimi kısa dönemde faizi ve gelir düzeyini belirler; maliye ve para politikasının etkisini gösterir.",b:["mankiw_m","blanchard","keynes"]},
+ {n:"Solow büyüme modeli",w:"Robert Solow",y:"1956",lv:2,d:"Sermaye birikimi azalan getiriyle karşılaşır; ekonomi durağan duruma yakınsar ve kalıcı büyüme yalnızca teknolojik ilerlemeden gelir.",b:["mankiw_m","romer_d","solow1956"]},
+ {n:"Phillips eğrisi ve doğal işsizlik oranı",w:"Phillips, Friedman, Phelps",y:"1958–1968",lv:2,d:"Kısa dönemde enflasyonla işsizlik arasında ödünleşim vardır; uzun dönemde beklentiler uyum sağladığı için ekonomi doğal orana döner.",b:["blanchard","mankiw_m","friedman1968"]},
+ {n:"Mundell–Fleming ve imkânsız üçlü",w:"Robert Mundell & Marcus Fleming",y:"1962–1963",lv:2,d:"Açık bir ekonomide sabit kur, serbest sermaye hareketi ve bağımsız para politikası aynı anda sağlanamaz.",b:["mankiw_m","obstfeld_rogoff"]},
+ {n:"Asimetrik bilgi (limonlar piyasası)",w:"George Akerlof",y:"1970",lv:2,d:"Satıcı malın kalitesini alıcıdan iyi biliyorsa iyi mallar piyasadan çekilir (ters seçim); garanti, sinyal ve düzenleme bu yüzden vardır.",b:["varian","akerlof1970"]},
+ {n:"Oyun teorisi ve Nash dengesi",w:"von Neumann & Morgenstern, Nash",y:"1944–1950",lv:3,d:"Her oyuncunun diğerlerinin stratejisine en iyi yanıtı verdiği durum; rekabetin, pazarlığın ve işbirliğinin ortak dili.",b:["gibbons","vnm","nash1950","fudenberg_tirole"]},
+ {n:"İşlem maliyetleri ve Coase teoremi",w:"Ronald Coase",y:"1937–1960",lv:3,d:"Piyasayı kullanmak maliyetlidir; firmalar ve kurumlar bu maliyetleri azaltmak için vardır. Mülkiyet hakları net ve pazarlık ucuzsa dışsallıklar kendiliğinden çözülür.",b:["coase","north"]},
+ {n:"Zaman tutarsızlığı",w:"Kydland & Prescott",y:"1977",lv:3,d:"Bugün optimal olan plan yarın bozma teşviki yaratır; bağımsız merkez bankası ve kurallar bu sorundan doğar.",b:["kydland_prescott1977","romer_d"]},
+ {n:"Endojen ve Schumpeteryen büyüme",w:"Paul Romer; Aghion & Howitt",y:"1990–1992",lv:3,d:"Teknoloji kâr peşindeki inovasyon kararlarının ürünüdür; fikirlerin rakip olmayan doğası sürekli büyümeyi mümkün kılar, yeni ürünler eskileri yerinden eder.",b:["romer1990","aghion_howitt","schumpeter"]},
+ {n:"Banka hücumu (Diamond–Dybvig)",w:"Diamond & Dybvig",y:"1983",lv:3,d:"Uzun vadeli varlıkları likit mevduatla fonlayan bankada panik, kendini gerçekleştiren bir dengedir.",b:["diamond_dybvig1983","bernanke21"]},
+ {n:"Beklenti teorisi",w:"Kahneman & Tversky",y:"1979",lv:3,d:"İnsanlar sonuçları bir referans noktasına göre kazanç ya da kayıp olarak değerlendirir ve kayıplar daha ağır basar.",b:["kahneman","kt1979","thaler"]},
+ {n:"Genel denge (Arrow–Debreu)",w:"Arrow & Debreu",y:"1954",lv:4,d:"Belirli koşullarda tüm piyasaları aynı anda dengeleyen bir fiyat vektörü vardır ve bu denge Pareto etkindir (refah teoremleri).",b:["debreu","mwg","arrow_debreu1954"]},
+ {n:"Rasyonel beklentiler ve Lucas kritiği",w:"Muth, Lucas, Sargent",y:"1961–1976",lv:4,d:"İnsanlar politikayı öngörerek davranır; politika etkileri ancak beklentileri modelleyen yapılarla değerlendirilebilir.",b:["lucas1976","ljungqvist_sargent","slp"]},
+ {n:"Yeni Keynesyen model",w:"Woodford, Galí, Clarida, Gertler",y:"1990'lar–2003",lv:4,d:"Yapışkan fiyatlar ve rasyonel beklentilerle kurulan, faiz kuralıyla (Taylor kuralı) işleyen modern merkez bankası modeli.",b:["woodford","romer_d"]}
+];
+
+/* ---------- durum ---------- */
+const byId=Object.fromEntries(B.map(b=>[b.id,b]));
+const KEY="iktisat-merdiveni-okunan";
+let read=new Set();
+try{const s=localStorage.getItem(KEY);if(s)read=new Set(JSON.parse(s).filter(x=>byId[x]))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify([...read]))}catch(e){}}
+const st={lv:"all",q:"",nobel:false,tr:false,unread:false,path:"ana",resetAsk:false};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dots=m=>"<i>"+"●".repeat(m)+"</i>"+"○".repeat(3-m);
+const yr=y=>y==null?"—":y;
+const sortB=(a,b)=>((b.pick?1:0)-(a.pick?1:0))||(a.tier-b.tier)||((a.y??9999)-(b.y??9999));
+const badgeHTML=b=>`<span class="badge t${b.tier}" title="${TIER[b.tier]}">${esc(b.badge)}</span>`;
+const pathsOf=id=>PATHS.filter(p=>p.ids.includes(id));
+const modelsOf=id=>MODELS.filter(m=>m.b.includes(id));
+
+function toggleRead(id){read.has(id)?read.delete(id):read.add(id);save();renderAll()}
+
+/* ---------- hero istatistikleri ---------- */
+function renderStats(){
+  const nobel=new Set();B.forEach(b=>{if(b.tier===0)nobel.add(b.id)});
+  $("#stats").innerHTML=`<div><b>${B.length}</b><span>eser ve makale</span></div><div><b>${nobel.size}</b><span>Nobel'li yazarın eseri</span></div><div><b>6</b><span>seviye</span></div><div><b>${PATHS.length}</b><span>okuma yolu</span></div><div><b>${MODELS.length}</b><span>temel model</span></div>`;
+}
+function renderMeter(){
+  $("#mCount").textContent=`${read.size}/${B.length}`;
+  $("#mBar").style.width=(read.size/B.length*100)+"%";
+}
+
+/* ---------- merdiven ---------- */
+function renderAxis(){
+  let h=`<button type="button" data-lv="all" aria-pressed="${st.lv==="all"}"><span class="lv">S0–S5</span><span class="nm">Tümü</span><span class="pb"><i style="width:${read.size/B.length*100}%"></i></span></button>`;
+  LEVELS.forEach((L,i)=>{const list=B.filter(b=>b.lv===i);const r=list.filter(b=>read.has(b.id)).length;
+    h+=`<button type="button" data-lv="${i}" aria-pressed="${st.lv===String(i)}"><span class="lv">S${i} · ${r}/${list.length}</span><span class="nm">${L.n}</span><span class="pb"><i style="width:${r/list.length*100}%"></i></span></button>`});
+  $("#axis").innerHTML=h;
+}
+function match(b){
+  if(st.nobel&&b.tier!==0)return false;
+  if(st.tr&&!b.trx)return false;
+  if(st.unread&&read.has(b.id))return false;
+  if(st.q){const q=st.q.toLocaleLowerCase("tr");const hay=[b.tt,b.t,b.a,b.badge,...b.gain].join(" ").toLocaleLowerCase("tr");if(!hay.includes(q))return false}
+  return true;
+}
+function cardHTML(b){
+  const r=read.has(b.id);
+  return `<article class="card${r?" read":""}" tabindex="0" role="button" data-open="${b.id}" aria-label="${esc(b.tt)}, ${esc(b.a)}">
+    ${b.pick?`<span class="pick">${esc(b.pick)}</span>`:""}
+    <div class="meta"><span class="mono">S${b.lv} · ${esc(b.k)}</span><span class="mono">${yr(b.y)}</span></div>
+    <h4>${esc(b.tt)}</h4>${b.t?`<div class="orig">${esc(b.t)}</div>`:""}
+    <div class="auth">${esc(b.a)}</div>
+    <p class="gain">${esc(b.gain[0])}</p>
+    <div class="foot">${badgeHTML(b)}${b.trx?'<span class="tr">TR</span>':""}<span class="dots" title="Matematik düzeyi">mat ${dots(b.m)}</span><span class="check" data-toggle="${b.id}" role="checkbox" aria-checked="${r}" tabindex="0" title="Okudum olarak işaretle">✓</span></div>
+  </article>`;
+}
+function renderLevels(){
+  let h="";let any=false;
+  LEVELS.forEach((L,i)=>{
+    if(st.lv!=="all"&&st.lv!==String(i))return;
+    const list=B.filter(b=>b.lv===i&&match(b)).sort(sortB);
+    if(!list.length)return;any=true;
+    h+=`<section class="level"><div class="level-head"><div class="code">S${i}</div><h3>${L.n}</h3><p>${L.d}</p><div class="out"><b>Bu seviyenin sonunda:</b> ${L.o}</div></div>`;
+    if(i===2){
+      ["ders","klasik","tema"].forEach(g=>{const gl=list.filter(b=>b.g===g);if(gl.length)h+=`<div class="group-title">${GROUPS[g]}</div><div class="grid">${gl.map(cardHTML).join("")}</div>`});
+    }else h+=`<div class="grid">${list.map(cardHTML).join("")}</div>`;
+    h+=`</section>`;
+  });
+  $("#levels").innerHTML=any?h:`<div class="empty">Bu filtrelerle eşleşen eser yok. Aramayı değiştir ya da filtreleri kaldır.</div>`;
+}
+
+/* ---------- yollar ---------- */
+function renderPaths(){
+  $("#plist").innerHTML=PATHS.map(p=>{const r=p.ids.filter(id=>read.has(id)).length;
+    return `<button class="pbtn" type="button" data-path="${p.id}" aria-pressed="${st.path===p.id}"><b>${p.n}</b><span>${p.d}</span><span class="mono">${r}/${p.ids.length} okundu</span><span class="pb"><i style="width:${r/p.ids.length*100}%"></i></span></button>`}).join("");
+  const p=PATHS.find(x=>x.id===st.path);
+  const next=p.ids.find(id=>!read.has(id));
+  $("#pdetail").innerHTML=`<h3>${p.n}</h3><p class="who">${p.w}${next?` <br><b>Sıradaki:</b> ${esc(byId[next].tt)}.`:" <br><b>Bu yolu tamamladın.</b>"}</p>
+   <ol class="steps">${p.ids.map((id,i)=>{const b=byId[id];const r=read.has(id);
+     return `<li class="step${r?" read":""}" data-open="${id}" tabindex="0" role="button"><span class="n">${i+1}</span><div class="body"><h4>${esc(b.tt)}</h4><div class="sub"><span>${esc(b.a)}</span><span class="mono">S${b.lv} · ${yr(b.y)}</span>${badgeHTML(b)}</div><p>${esc(b.gain[0])}</p></div><span class="check" data-toggle="${id}" role="checkbox" aria-checked="${r}" tabindex="0" title="Okudum olarak işaretle">✓</span></li>`}).join("")}</ol>`;
+}
+
+/* ---------- modeller ---------- */
+function renderModels(){
+  $("#mgrid").innerHTML=MODELS.slice().sort((a,b)=>a.lv-b.lv).map(m=>`<article class="model"><div class="meta"><span class="mono">S${m.lv} seviyesinde öğrenilir</span><span class="mono">${m.y}</span></div><h4>${m.n}</h4><div class="who">${esc(m.w)}</div><p>${m.d}</p><div class="links">${m.b.map(id=>`<button type="button" data-open="${id}">${esc(byId[id].tt)}</button>`).join("")}</div></article>`).join("");
+}
+
+/* ---------- ilerleme ---------- */
+function renderProgress(){
+  const pct=Math.round(read.size/B.length*100);
+  const rows=LEVELS.map((L,i)=>{const l=B.filter(b=>b.lv===i);const r=l.filter(b=>read.has(b.id)).length;return `<div class="row"><span>S${i} · ${L.n}</span><span class="pb"><i style="width:${r/l.length*100}%"></i></span><span class="mono">${r}/${l.length}</span></div>`}).join("");
+  const prow=PATHS.map(p=>{const r=p.ids.filter(id=>read.has(id)).length;return `<div class="row"><span>${p.n}</span><span class="pb"><i style="width:${r/p.ids.length*100}%"></i></span><span class="mono">${r}/${p.ids.length}</span></div>`}).join("");
+  const list=[...read].map(id=>byId[id]).sort((a,b)=>a.lv-b.lv);
+  $("#prog").innerHTML=`<div class="panel"><h3>Genel</h3><div class="big">${pct}%</div><p class="mono" style="color:var(--muted)">${read.size} / ${B.length} eser</p>
+    ${read.size?(st.resetAsk?`<div class="confirm"><span>Tüm işaretler silinsin mi?</span><button class="btn" type="button" id="resetYes">Evet, sil</button><button class="btn" type="button" id="resetNo">Vazgeç</button></div>`:`<button class="btn" type="button" id="resetAsk" style="margin-top:12px">İşaretleri sıfırla</button>`):""}</div>
+    <div class="panel"><h3>Seviyelere göre</h3>${rows}</div>
+    <div class="panel"><h3>Yollara göre</h3>${prow}</div>
+    <div class="panel"><h3>Okuduklarım</h3>${list.length?`<ul class="readlist">${list.map(b=>`<li><button type="button" data-open="${b.id}"><span class="mono" style="color:var(--muted)">S${b.lv}</span> ${esc(b.tt)}</button></li>`).join("")}</ul>`:`<p style="color:var(--muted);margin:0">Henüz işaret yok. Bir kartın sağ altındaki daireye tıklayarak okuduğun eseri işaretle. İlk öneri: Heilbroner'ın Dünyevi Filozoflar'ı, ardından Mankiw.</p>`}</div>`;
+}
+
+/* ---------- diyalog ---------- */
+const dlg=$("#dlg");
+function openBook(id){
+  const b=byId[id];if(!b)return;const r=read.has(id);
+  const ps=pathsOf(id),ms=modelsOf(id);
+  $("#dlgBody").innerHTML=`<button class="x" type="button" id="dClose" aria-label="Kapat">×</button>
+   <div class="kicker"><span class="mono">S${b.lv} · ${LEVELS[b.lv].n}</span><span>·</span><span>${esc(b.k)}</span><span>·</span><span class="mono">${yr(b.y)}</span>${b.trx?'<span class="tr">Türkçesi var</span>':""}</div>
+   <div><h2 id="dTitle">${esc(b.tt)}</h2>${b.t?`<div class="orig" style="margin-top:6px">${esc(b.t)}</div>`:""}</div>
+   <div class="author"><h5>Yazar hakkında</h5><div class="nm">${esc(b.a)} ${badgeHTML(b)}</div><p>${esc(b.bio)}</p></div>
+   <div><h5>Okuyunca ne kazanırsın</h5><ul class="gain">${b.gain.map(g=>`<li>${esc(g)}</li>`).join("")}</ul></div>
+   <div class="how"><h5>Nasıl okumalı</h5>${esc(b.how)}${b.link?` <a href="${b.link}" target="_blank" rel="noopener">${b.link.replace("https://","")}</a>`:""}</div>
+   <div class="facts"><div><span>Matematik düzeyi</span><b class="mono">${dots(b.m)}</b></div><div><span>Yazar profili</span><b>${TIER[b.tier]}</b></div><div><span>Seviye</span><b>S${b.lv} · ${LEVELS[b.lv].n}</b></div></div>
+   ${ps.length?`<div><h5>Bulunduğu okuma yolları</h5><div class="chips">${ps.map(p=>`<button class="chip sm" type="button" data-gopath="${p.id}">${p.n} · ${p.ids.indexOf(id)+1}. adım</button>`).join("")}</div></div>`:""}
+   ${ms.length?`<div><h5>Bu eserde öğrenilen modeller</h5><div class="chips">${ms.map(m=>`<button class="chip sm" type="button" data-gomodel="1">${m.n}</button>`).join("")}</div></div>`:""}
+   <div class="actions"><button class="btn ${r?"":"primary"}" type="button" id="dRead">${r?"✓ Okundu olarak işaretli (kaldır)":"Okudum olarak işaretle"}</button><button class="btn" type="button" id="dClose2">Kapat</button></div>`;
+  $("#dClose").onclick=$("#dClose2").onclick=()=>dlg.close();
+  $("#dRead").onclick=()=>{toggleRead(id);openBook(id)};
+  dlg.querySelectorAll("[data-gopath]").forEach(x=>x.onclick=()=>{st.path=x.dataset.gopath;dlg.close();go("yollar")});
+  dlg.querySelectorAll("[data-gomodel]").forEach(x=>x.onclick=()=>{dlg.close();go("modeller")});
+  if(!dlg.open){try{dlg.showModal()}catch(e){dlg.setAttribute("open","")}}
+}
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+
+/* ---------- olaylar ---------- */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-toggle]");if(t){e.stopPropagation();toggleRead(t.dataset.toggle);return}
+  const o=e.target.closest("[data-open]");if(o&&!dlg.contains(o)){openBook(o.dataset.open);return}
+  const l=e.target.closest("#axis [data-lv]");if(l){st.lv=l.dataset.lv;renderAxis();renderLevels();return}
+  const p=e.target.closest("[data-path]");if(p){st.path=p.dataset.path;renderPaths();return}
+  if(e.target.id==="resetAsk"){st.resetAsk=true;renderProgress()}
+  if(e.target.id==="resetNo"){st.resetAsk=false;renderProgress()}
+  if(e.target.id==="resetYes"){read.clear();save();st.resetAsk=false;renderAll()}
+});
+document.addEventListener("keydown",e=>{
+  if(e.key!=="Enter"&&e.key!==" ")return;
+  const t=e.target.closest?.("[data-toggle]");if(t){e.preventDefault();toggleRead(t.dataset.toggle);return}
+  const o=e.target.closest?.("[data-open]");if(o&&o.matches("article,li")){e.preventDefault();openBook(o.dataset.open)}
+});
+$("#q").addEventListener("input",e=>{st.q=e.target.value.trim();renderLevels()});
+[["#fNobel","nobel"],["#fTr","tr"],["#fUnread","unread"]].forEach(([s,k])=>$(s).addEventListener("click",e=>{st[k]=!st[k];e.currentTarget.setAttribute("aria-pressed",st[k]);renderLevels()}));
+$("#ctaStart").addEventListener("click",()=>openBook("mankiw_p"));
+
+/* ---------- yönlendirme ---------- */
+const VIEWS=["merdiven","yollar","modeller","ilerleme"];
+function go(v){if(location.hash!=="#"+v)location.hash=v;else show(v)}
+function show(v){
+  if(!VIEWS.includes(v))v="merdiven";
+  VIEWS.forEach(x=>$("#v-"+x).hidden=x!==v);
+  document.querySelectorAll("nav.tabs a").forEach(a=>{if(a.dataset.v===v)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  if(v==="ilerleme")renderProgress();
+  if(v==="yollar")renderPaths();
+}
+window.addEventListener("hashchange",()=>{show(location.hash.slice(1));const m=$("main");if(m)m.scrollIntoView({block:"start"})});
+
+function renderAll(){renderMeter();renderAxis();renderLevels();renderPaths();renderProgress()}
+
+/* ---------- arz-talep laboratuvarı ---------- */
+(function(){
+  const X0=44,Y0=256,W=296,H=228;
+  const sx=q=>X0+q/10*W, sy=p=>Y0-p/10*H;
+  const fmt=v=>v.toLocaleString("tr-TR",{minimumFractionDigits:1,maximumFractionDigits:1});
+  let g="";for(let i=1;i<=10;i++){g+=`<line x1="${sx(i)}" y1="${sy(0)}" x2="${sx(i)}" y2="${sy(10)}" stroke="var(--grid)"/><line x1="${sx(0)}" y1="${sy(i)}" x2="${sx(10)}" y2="${sy(i)}" stroke="var(--grid)"/>`}
+  document.getElementById("gridl").innerHTML=g;
+  const set=(id,a)=>{const el=document.getElementById(id);for(const k in a)el.setAttribute(k,a[k])};
+  const pts=arr=>arr.map(([q,p])=>sx(q)+","+sy(p)).join(" ");
+  const sa=$("#sa"),sc=$("#sc");const S=0.6;const Q0=(9-1)/(1+S),P0=9-Q0;
+  function upd(){
+    const a=+sa.value,c=+sc.value;const Q=(a-c)/(1+S),P=a-Q;
+    const d1q=Math.max(0,a-10),d2q=Math.min(10,a);
+    set("dl",{x1:sx(d1q),y1:sy(a-d1q),x2:sx(d2q),y2:sy(a-d2q)});
+    const s2q=Math.min(10,(10-c)/S);
+    set("sl",{x1:sx(0),y1:sy(c),x2:sx(s2q),y2:sy(c+S*s2q)});
+    set("cs",{points:pts([[0,P],[0,Math.min(a,10)],[d1q,Math.min(a,10)],[Q,P]])});
+    set("ps",{points:pts([[0,P],[0,c],[Q,P]])});
+    set("eq",{cx:sx(Q),cy:sy(P)});
+    set("hd",{x1:sx(0),y1:sy(P),x2:sx(Q),y2:sy(P)});
+    set("vd",{x1:sx(Q),y1:sy(P),x2:sx(Q),y2:sy(0)});
+    set("plab",{x:X0-6,y:sy(P)+4,"text-anchor":"end"});
+    set("qlab",{x:sx(Q),y:Y0+14,"text-anchor":"middle"});
+    set("dlab",{x:Math.min(sx(d2q)-4,X0+W-4),y:sy(a-d2q)-8,"text-anchor":"end"});
+    set("slab",{x:Math.min(sx(s2q)-4,X0+W-4),y:sy(c+S*s2q)+(s2q>=10?-8:16),"text-anchor":"end"});
+    $("#ro").innerHTML=`<span>P* = <b>${fmt(P)}</b></span><span>Q* = <b>${fmt(Q)}</b></span><span style="color:var(--accent)">Tüketici artığı ${fmt(.5*Q*Q)}</span><span style="color:var(--blue)">Üretici artığı ${fmt(.5*S*Q*Q)}</span>`;
+    const da=a-9,dc=c-1;let msg;
+    if(Math.abs(da)<.15&&Math.abs(dc)<.15)msg="Başlangıç dengesi. Talep kaydırıcısını sağa çek: ne olacağını tahmin et, sonra bak.";
+    else{const parts=[];if(da>=.15)parts.push("talep arttı");if(da<=-.15)parts.push("talep azaldı");if(dc>=.15)parts.push("maliyet yükseldi, arz geriledi");if(dc<=-.15)parts.push("maliyet düştü, arz genişledi");
+      const pr=P>P0+.05?"yükseldi":P<P0-.05?"düştü":"neredeyse değişmedi";const qr=Q>Q0+.05?"arttı":Q<Q0-.05?"azaldı":"neredeyse değişmedi";
+      msg=parts.join(" ve ").replace(/^./,s=>s.toLocaleUpperCase("tr"))+`. Sonuç: fiyat ${pr}, miktar ${qr}. Mankiw 4. bölümün tamamı bu iki eğrinin hareketi.`}
+    $("#sdNote").textContent=msg;
+  }
+  sa.addEventListener("input",upd);sc.addEventListener("input",upd);upd();
+})();
+
+renderStats();renderAll();renderModels();show(location.hash.slice(1));
+</script>
+
+</body></html>
